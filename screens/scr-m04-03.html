@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCR-M04-03 - Thu bằng mã QR và đối soát</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/ux-v2.css">
+<link rel="stylesheet" href="../assets/zenith.css">
+<link rel="stylesheet" href="../assets/zenith-today.css">
+<script src="../assets/util.js"></script>
+<script src="../assets/permissions.js"></script>
+<script src="../assets/app.js"></script>
+</head>
+<body data-root=".." data-module="M04" data-scr="SCR-M04-03">
+<div class="demo-banner" role="note"><strong>Dữ liệu minh họa</strong>: tên, số điện thoại, email và số tiền trên màn hình này là dữ liệu giả, không phải thông tin thật.</div>
+<header class="topbar">
+  <a class="brand" href="../index.html">Quản lý lớp học<small>Trung tâm tiếng Nhật - bản mockup</small></a>
+  <span class="spacer"></span>
+  <div id="role-bar"></div>
+  <a class="btn-home" href="../index.html">Về trang chọn vai trò</a>
+</header>
+<div class="app">
+<nav class="sidenav" id="module-nav" aria-label="Module"></nav>
+<main class="main">
+  <div class="page-head">
+    <h1>Thu bằng mã QR và đối soát</h1>
+    <p class="muted" style="margin-bottom:0">M04: Học phí, thu chi, công nợ. Hiển thị mã QR minh họa cho khoản cần thu, đối soát giao dịch khớp, khớp một phần, không khớp, trùng.</p>
+    <div class="meta" aria-label="Mã liên quan">
+      <span class="tag code">SCR-M04-03</span>
+      <span class="tag">US-M04-04</span>
+      <span class="tag">UC-M04-04</span>
+      <span class="tag">FR-M04-05</span>
+      <span class="tag">FR-M04-06</span>
+    </div>
+    <div id="perm-info" class="perm-bar"></div>
+  </div>
+  <div id="denied" class="denied-panel"></div>
+  <div class="screen-content">
+
+    <div class="grid c2">
+      <div class="card">
+        <h2>Mã QR cho khoản cần thu</h2>
+        <div class="alert warn" role="note"><strong>Mã QR minh họa.</strong> Hình dưới là dữ liệu giả, không quét được và không gắn tài khoản thật.</div>
+        <div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap">
+          <svg class="qr" viewBox="0 0 162 162" width="180" height="180" role="img" aria-label="Mã QR minh họa, không quét được"><rect width="162" height="162" fill="#fff"/><g fill="#1d2733"><rect x="6" y="6" width="6" height="6"/><rect x="12" y="6" width="6" height="6"/><rect x="18" y="6" width="6" height="6"/><rect x="24" y="6" width="6" height="6"/><rect x="30" y="6" width="6" height="6"/><rect x="36" y="6" width="6" height="6"/><rect x="42" y="6" width="6" height="6"/><rect x="60" y="6" width="6" height="6"/><rect x="72" y="6" width="6" height="6"/><rect x="84" y="6" width="6" height="6"/><rect x="90" y="6" width="6" height="6"/><rect x="96" y="6" width="6" height="6"/><rect x="114" y="6" width="6" height="6"/><rect x="120" y="6" width="6" height="6"/><rect x="126" y="6" width="6" height="6"/><rect x="132" y="6" width="6" height="6"/><rect x="138" y="6" width="6" height="6"/><rect x="144" y="6" width="6" height="6"/><rect x="150" y="6" width="6" height="6"/><rect x="6" y="12" width="6" height="6"/><rect x="42" y="12" width="6" height="6"/><rect x="54" y="12" width="6" height="6"/><rect x="84" y="12" width="6" height="6"/><rect x="102" y="12" width="6" height="6"/><rect x="114" y="12" width="6" height="6"/><rect x="150" y="12" width="6" height="6"/><rect x="6" y="18" width="6" height="6"/><rect x="18" y="18" width="6" height="6"/><rect x="24" y="18" width="6" height="6"/><rect x="30" y="18" width="6" height="6"/><rect x="42" y="18" width="6" height="6"/><rect x="60" y="18" width="6" height="6"/><rect x="66" y="18" width="6" height="6"/><rect x="72" y="18" width="6" height="6"/><rect x="78" y="18" width="6" height="6"/><rect x="84" y="18" width="6" height="6"/><rect x="90" y="18" width="6" height="6"/><rect x="114" y="18" width="6" height="6"/><rect x="126" y="18" width="6" height="6"/><rect x="132" y="18" width="6" height="6"/><rect x="138" y="18" width="6" height="6"/><rect x="150" y="18" width="6" height="6"/><rect x="6" y="24" width="6" height="6"/><rect x="18" y="24" width="6" height="6"/><rect x="24" y="24" width="6" height="6"/><rect x="30" y="24" width="6" height="6"/><rect x="42" y="24" width="6" height="6"/><rect x="54" y="24" width="6" height="6"/><rect x="78" y="24" width="6" height="6"/><rect x="84" y="24" width="6" height="6"/><rect x="90" y="24" width="6" height="6"/><rect x="114" y="24" width="6" height="6"/><rect x="126" y="24" width="6" height="6"/><rect x="132" y="24" width="6" height="6"/><rect x="138" y="24" width="6" height="6"/><rect x="150" y="24" width="6" height="6"/><rect x="6" y="30" width="6" height="6"/><rect x="18" y="30" width="6" height="6"/><rect x="24" y="30" width="6" height="6"/><rect x="30" y="30" width="6" height="6"/><rect x="42" y="30" width="6" height="6"/><rect x="54" y="30" width="6" height="6"/><rect x="66" y="30" width="6" height="6"/><rect x="78" y="30" width="6" height="6"/><rect x="84" y="30" width="6" height="6"/><rect x="96" y="30" width="6" height="6"/><rect x="114" y="30" width="6" height="6"/><rect x="126" y="30" width="6" height="6"/><rect x="132" y="30" width="6" height="6"/><rect x="138" y="30" width="6" height="6"/><rect x="150" y="30" width="6" height="6"/><rect x="6" y="36" width="6" height="6"/><rect x="42" y="36" width="6" height="6"/><rect x="54" y="36" width="6" height="6"/><rect x="60" y="36" width="6" height="6"/><rect x="72" y="36" width="6" height="6"/><rect x="96" y="36" width="6" height="6"/><rect x="114" y="36" width="6" height="6"/><rect x="150" y="36" width="6" height="6"/><rect x="6" y="42" width="6" height="6"/><rect x="12" y="42" width="6" height="6"/><rect x="18" y="42" width="6" height="6"/><rect x="24" y="42" width="6" height="6"/><rect x="30" y="42" width="6" height="6"/><rect x="36" y="42" width="6" height="6"/><rect x="42" y="42" width="6" height="6"/><rect x="54" y="42" width="6" height="6"/><rect x="66" y="42" width="6" height="6"/><rect x="72" y="42" width="6" height="6"/><rect x="96" y="42" width="6" height="6"/><rect x="102" y="42" width="6" height="6"/><rect x="114" y="42" width="6" height="6"/><rect x="120" y="42" width="6" height="6"/><rect x="126" y="42" width="6" height="6"/><rect x="132" y="42" width="6" height="6"/><rect x="138" y="42" width="6" height="6"/><rect x="144" y="42" width="6" height="6"/><rect x="150" y="42" width="6" height="6"/><rect x="66" y="48" width="6" height="6"/><rect x="72" y="48" width="6" height="6"/><rect x="84" y="48" width="6" height="6"/><rect x="96" y="48" width="6" height="6"/><rect x="102" y="48" width="6" height="6"/><rect x="6" y="54" width="6" height="6"/><rect x="12" y="54" width="6" height="6"/><rect x="36" y="54" width="6" height="6"/><rect x="42" y="54" width="6" height="6"/><rect x="48" y="54" width="6" height="6"/><rect x="60" y="54" width="6" height="6"/><rect x="66" y="54" width="6" height="6"/><rect x="72" y="54" width="6" height="6"/><rect x="78" y="54" width="6" height="6"/><rect x="84" y="54" width="6" height="6"/><rect x="90" y="54" width="6" height="6"/><rect x="114" y="54" width="6" height="6"/><rect x="126" y="54" width="6" height="6"/><rect x="132" y="54" width="6" height="6"/><rect x="18" y="60" width="6" height="6"/><rect x="36" y="60" width="6" height="6"/><rect x="42" y="60" width="6" height="6"/><rect x="48" y="60" width="6" height="6"/><rect x="54" y="60" width="6" height="6"/><rect x="78" y="60" width="6" height="6"/><rect x="84" y="60" width="6" height="6"/><rect x="114" y="60" width="6" height="6"/><rect x="126" y="60" width="6" height="6"/><rect x="138" y="60" width="6" height="6"/><rect x="144" y="60" width="6" height="6"/><rect x="12" y="66" width="6" height="6"/><rect x="30" y="66" width="6" height="6"/><rect x="36" y="66" width="6" height="6"/><rect x="42" y="66" width="6" height="6"/><rect x="60" y="66" width="6" height="6"/><rect x="66" y="66" width="6" height="6"/><rect x="72" y="66" width="6" height="6"/><rect x="78" y="66" width="6" height="6"/><rect x="84" y="66" width="6" height="6"/><rect x="90" y="66" width="6" height="6"/><rect x="96" y="66" width="6" height="6"/><rect x="108" y="66" width="6" height="6"/><rect x="126" y="66" width="6" height="6"/><rect x="144" y="66" width="6" height="6"/><rect x="18" y="72" width="6" height="6"/><rect x="36" y="72" width="6" height="6"/><rect x="54" y="72" width="6" height="6"/><rect x="60" y="72" width="6" height="6"/><rect x="66" y="72" width="6" height="6"/><rect x="72" y="72" width="6" height="6"/><rect x="84" y="72" width="6" height="6"/><rect x="90" y="72" width="6" height="6"/><rect x="96" y="72" width="6" height="6"/><rect x="120" y="72" width="6" height="6"/><rect x="138" y="72" width="6" height="6"/><rect x="144" y="72" width="6" height="6"/><rect x="18" y="78" width="6" height="6"/><rect x="24" y="78" width="6" height="6"/><rect x="30" y="78" width="6" height="6"/><rect x="42" y="78" width="6" height="6"/><rect x="60" y="78" width="6" height="6"/><rect x="84" y="78" width="6" height="6"/><rect x="90" y="78" width="6" height="6"/><rect x="108" y="78" width="6" height="6"/><rect x="114" y="78" width="6" height="6"/><rect x="138" y="78" width="6" height="6"/><rect x="144" y="78" width="6" height="6"/><rect x="150" y="78" width="6" height="6"/><rect x="6" y="84" width="6" height="6"/><rect x="30" y="84" width="6" height="6"/><rect x="42" y="84" width="6" height="6"/><rect x="54" y="84" width="6" height="6"/><rect x="60" y="84" width="6" height="6"/><rect x="90" y="84" width="6" height="6"/><rect x="102" y="84" width="6" height="6"/><rect x="114" y="84" width="6" height="6"/><rect x="120" y="84" width="6" height="6"/><rect x="144" y="84" width="6" height="6"/><rect x="150" y="84" width="6" height="6"/><rect x="6" y="90" width="6" height="6"/><rect x="12" y="90" width="6" height="6"/><rect x="18" y="90" width="6" height="6"/><rect x="30" y="90" width="6" height="6"/><rect x="36" y="90" width="6" height="6"/><rect x="42" y="90" width="6" height="6"/><rect x="54" y="90" width="6" height="6"/><rect x="60" y="90" width="6" height="6"/><rect x="72" y="90" width="6" height="6"/><rect x="78" y="90" width="6" height="6"/><rect x="96" y="90" width="6" height="6"/><rect x="102" y="90" width="6" height="6"/><rect x="108" y="90" width="6" height="6"/><rect x="114" y="90" width="6" height="6"/><rect x="120" y="90" width="6" height="6"/><rect x="132" y="90" width="6" height="6"/><rect x="138" y="90" width="6" height="6"/><rect x="144" y="90" width="6" height="6"/><rect x="150" y="90" width="6" height="6"/><rect x="12" y="96" width="6" height="6"/><rect x="36" y="96" width="6" height="6"/><rect x="42" y="96" width="6" height="6"/><rect x="48" y="96" width="6" height="6"/><rect x="54" y="96" width="6" height="6"/><rect x="60" y="96" width="6" height="6"/><rect x="66" y="96" width="6" height="6"/><rect x="96" y="96" width="6" height="6"/><rect x="102" y="96" width="6" height="6"/><rect x="108" y="96" width="6" height="6"/><rect x="132" y="96" width="6" height="6"/><rect x="144" y="96" width="6" height="6"/><rect x="150" y="96" width="6" height="6"/><rect x="12" y="102" width="6" height="6"/><rect x="24" y="102" width="6" height="6"/><rect x="54" y="102" width="6" height="6"/><rect x="90" y="102" width="6" height="6"/><rect x="102" y="102" width="6" height="6"/><rect x="114" y="102" width="6" height="6"/><rect x="120" y="102" width="6" height="6"/><rect x="126" y="102" width="6" height="6"/><rect x="138" y="102" width="6" height="6"/><rect x="150" y="102" width="6" height="6"/><rect x="54" y="108" width="6" height="6"/><rect x="60" y="108" width="6" height="6"/><rect x="78" y="108" width="6" height="6"/><rect x="84" y="108" width="6" height="6"/><rect x="90" y="108" width="6" height="6"/><rect x="96" y="108" width="6" height="6"/><rect x="102" y="108" width="6" height="6"/><rect x="108" y="108" width="6" height="6"/><rect x="114" y="108" width="6" height="6"/><rect x="120" y="108" width="6" height="6"/><rect x="126" y="108" width="6" height="6"/><rect x="132" y="108" width="6" height="6"/><rect x="144" y="108" width="6" height="6"/><rect x="150" y="108" width="6" height="6"/><rect x="6" y="114" width="6" height="6"/><rect x="12" y="114" width="6" height="6"/><rect x="18" y="114" width="6" height="6"/><rect x="24" y="114" width="6" height="6"/><rect x="30" y="114" width="6" height="6"/><rect x="36" y="114" width="6" height="6"/><rect x="42" y="114" width="6" height="6"/><rect x="84" y="114" width="6" height="6"/><rect x="90" y="114" width="6" height="6"/><rect x="108" y="114" width="6" height="6"/><rect x="114" y="114" width="6" height="6"/><rect x="120" y="114" width="6" height="6"/><rect x="126" y="114" width="6" height="6"/><rect x="138" y="114" width="6" height="6"/><rect x="144" y="114" width="6" height="6"/><rect x="150" y="114" width="6" height="6"/><rect x="6" y="120" width="6" height="6"/><rect x="42" y="120" width="6" height="6"/><rect x="54" y="120" width="6" height="6"/><rect x="66" y="120" width="6" height="6"/><rect x="72" y="120" width="6" height="6"/><rect x="84" y="120" width="6" height="6"/><rect x="114" y="120" width="6" height="6"/><rect x="120" y="120" width="6" height="6"/><rect x="138" y="120" width="6" height="6"/><rect x="150" y="120" width="6" height="6"/><rect x="6" y="126" width="6" height="6"/><rect x="18" y="126" width="6" height="6"/><rect x="24" y="126" width="6" height="6"/><rect x="30" y="126" width="6" height="6"/><rect x="42" y="126" width="6" height="6"/><rect x="54" y="126" width="6" height="6"/><rect x="60" y="126" width="6" height="6"/><rect x="66" y="126" width="6" height="6"/><rect x="102" y="126" width="6" height="6"/><rect x="114" y="126" width="6" height="6"/><rect x="6" y="132" width="6" height="6"/><rect x="18" y="132" width="6" height="6"/><rect x="24" y="132" width="6" height="6"/><rect x="30" y="132" width="6" height="6"/><rect x="42" y="132" width="6" height="6"/><rect x="54" y="132" width="6" height="6"/><rect x="60" y="132" width="6" height="6"/><rect x="72" y="132" width="6" height="6"/><rect x="78" y="132" width="6" height="6"/><rect x="90" y="132" width="6" height="6"/><rect x="96" y="132" width="6" height="6"/><rect x="114" y="132" width="6" height="6"/><rect x="126" y="132" width="6" height="6"/><rect x="150" y="132" width="6" height="6"/><rect x="6" y="138" width="6" height="6"/><rect x="18" y="138" width="6" height="6"/><rect x="24" y="138" width="6" height="6"/><rect x="30" y="138" width="6" height="6"/><rect x="42" y="138" width="6" height="6"/><rect x="60" y="138" width="6" height="6"/><rect x="66" y="138" width="6" height="6"/><rect x="90" y="138" width="6" height="6"/><rect x="96" y="138" width="6" height="6"/><rect x="102" y="138" width="6" height="6"/><rect x="6" y="144" width="6" height="6"/><rect x="42" y="144" width="6" height="6"/><rect x="54" y="144" width="6" height="6"/><rect x="84" y="144" width="6" height="6"/><rect x="96" y="144" width="6" height="6"/><rect x="114" y="144" width="6" height="6"/><rect x="126" y="144" width="6" height="6"/><rect x="132" y="144" width="6" height="6"/><rect x="150" y="144" width="6" height="6"/><rect x="6" y="150" width="6" height="6"/><rect x="12" y="150" width="6" height="6"/><rect x="18" y="150" width="6" height="6"/><rect x="24" y="150" width="6" height="6"/><rect x="30" y="150" width="6" height="6"/><rect x="36" y="150" width="6" height="6"/><rect x="42" y="150" width="6" height="6"/><rect x="54" y="150" width="6" height="6"/><rect x="66" y="150" width="6" height="6"/><rect x="72" y="150" width="6" height="6"/><rect x="90" y="150" width="6" height="6"/><rect x="96" y="150" width="6" height="6"/><rect x="102" y="150" width="6" height="6"/><rect x="114" y="150" width="6" height="6"/><rect x="150" y="150" width="6" height="6"/></g></svg>
+          <dl class="small" style="margin:0;min-width:200px">
+            <dt class="muted">Học viên</dt><dd style="margin:0 0 6px">Bùi Khánh Linh</dd>
+            <dt class="muted">Khoản</dt><dd style="margin:0 0 6px">Đợt 2, khóa N5 ngắn hạn</dd>
+            <dt class="muted">Số tiền</dt><dd style="margin:0 0 6px"><strong>2.000.000 đồng</strong></dd>
+            <dt class="muted">Tài khoản nhận mẫu</dt><dd class="mono" style="margin:0 0 6px">0000000000</dd>
+            <dt class="muted">Nội dung chuyển khoản (mã đối soát)</dt><dd class="mono" style="margin:0">HP-D2-0005</dd>
+          </dl>
+        </div>
+        <p class="small muted">Mỗi khoản phải thu có đúng 1 mã đối soát duy nhất; số tiền trong mã bằng số còn nợ và mã được sinh lại khi số còn nợ đổi.</p>
+        <div class="toolbar"><button class="btn secondary" type="button" data-act="tao" data-toast="Đã sinh lại mã QR theo số còn nợ mới (minh họa)">Sinh lại mã QR</button></div>
+      </div>
+      <div class="card">
+        <h2>Quy tắc đối soát</h2>
+        <ul class="small" style="margin:0;padding-left:18px">
+          <li>Đúng mã và đúng số tiền: tự ghi nhận thanh toán.</li>
+          <li>Đúng mã nhưng lệch số tiền: ghi nhận khớp một phần, chờ kế toán xác nhận.</li>
+          <li>Không có mã hoặc mã không tồn tại: đưa vào danh sách chờ xử lý.</li>
+          <li>Trùng mã giao dịch: loại, không ghi nhận lần hai.</li>
+          <li>Kế toán xử lý danh sách chờ trong 2 ngày làm việc.</li>
+        </ul>
+        <p class="small muted">Giao dịch đến từ giao diện nhận giao dịch trừu tượng; bản mockup dùng danh sách mẫu, không kết nối ngân hàng.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Giao dịch nhận được và kết quả đối soát</h2>
+      <div class="table-wrap"><table class="data" id="tbl-gd">
+        <thead><tr><th>Mã giao dịch</th><th>Số tiền (đồng)</th><th>Nội dung</th><th>Kết quả</th><th>Thao tác</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">GD-0001</td><td class="num">2.000.000</td><td class="mono">HP-D2-0005</td><td><span class="badge ok">Khớp hoàn toàn: đã tự ghi nhận</span></td><td></td></tr>
+          <tr id="gd2"><td class="mono">GD-0002</td><td class="num">1.500.000</td><td class="mono">HP-D2-0006</td><td><span class="badge warn" id="gd2-kq">Khớp một phần: còn nợ 500.000, chờ xác nhận</span></td><td><button class="btn secondary" type="button" id="gd2-xn" data-act="duyet">Xác nhận khớp một phần</button></td></tr>
+          <tr id="gd3"><td class="mono">GD-0003</td><td class="num">2.000.000</td><td class="mono">(không có mã)</td><td><span class="badge bad" id="gd3-kq">Không khớp: chờ xử lý</span></td><td><select id="gd3-hv" aria-label="Gán cho khoản" style="font:inherit;padding:6px 8px;border:1px solid #b7bec7;border-radius:6px;min-height:36px;"><option>Hồ Tuấn Kiệt - Đợt 2</option><option>Phạm Gia Bảo - Đợt 1</option></select> <button class="btn secondary" type="button" id="gd3-gan" data-act="sua">Gán thủ công</button></td></tr>
+          <tr><td class="mono">GD-0001</td><td class="num">2.000.000</td><td class="mono">HP-D2-0005</td><td><span class="badge muted">Trùng mã giao dịch: đã loại</span></td><td></td></tr>
+        </tbody>
+      </table></div>
+      <div id="gd-msg" class="alert info" hidden></div>
+      <div class="toolbar"><a class="btn accent" href="scr-m04-02.html">Quay lại công nợ</a></div>
+    </div>
+<script>
+(function () {
+  document.getElementById('gd2-xn').addEventListener('click', function () {
+    var k = document.getElementById('gd2-kq'); k.className = 'badge ok'; k.textContent = 'Đã xác nhận: ghi nhận 1.500.000, còn nợ 500.000';
+    this.disabled = true; U.setMsg('gd-msg', 'ok', 'Đã xác nhận GD-0002: ghi nhận 1.500.000 đồng, khoản còn nợ 500.000 đồng (minh họa).');
+  });
+  document.getElementById('gd3-gan').addEventListener('click', function () {
+    var w = document.getElementById('gd3-hv').value, k = document.getElementById('gd3-kq'); k.className = 'badge ok'; k.textContent = 'Đã gán thủ công: ' + w;
+    this.disabled = true; U.setMsg('gd-msg', 'ok', 'Đã gán GD-0003 cho ' + w + ' và ghi nhận 2.000.000 đồng (minh họa).');
+  });
+})();
+</script>
+
+  </div>
+</main>
+</div>
+<script src="../assets/ux-v2.js"></script>
+<script src="../assets/zenith.js"></script>
+</body>
+</html>

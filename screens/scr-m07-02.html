@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCR-M07-02 - Nhắc tự động theo lịch</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/ux-v2.css">
+<link rel="stylesheet" href="../assets/zenith.css">
+<link rel="stylesheet" href="../assets/zenith-today.css">
+<script src="../assets/util.js"></script>
+<script src="../assets/permissions.js"></script>
+<script src="../assets/app.js"></script>
+</head>
+<body data-root=".." data-module="M07" data-scr="SCR-M07-02">
+<div class="demo-banner" role="note"><strong>Dữ liệu minh họa</strong>: tên, số điện thoại, email và số tiền trên màn hình này là dữ liệu giả, không phải thông tin thật.</div>
+<header class="topbar">
+  <a class="brand" href="../index.html">Quản lý lớp học<small>Trung tâm tiếng Nhật - bản mockup</small></a>
+  <span class="spacer"></span>
+  <div id="role-bar"></div>
+  <a class="btn-home" href="../index.html">Về trang chọn vai trò</a>
+</header>
+<div class="app">
+<nav class="sidenav" id="module-nav" aria-label="Module"></nav>
+<main class="main">
+  <div class="page-head">
+    <h1>Nhắc tự động theo lịch</h1>
+    <p class="muted" style="margin-bottom:0">M07: Thông báo (Zalo, SMS, email). Thiết lập nhắc tự động theo lịch.</p>
+    <div class="meta" aria-label="Mã liên quan">
+      <span class="tag code">SCR-M07-02</span>
+      <span class="tag">US-M07-03</span>
+      <span class="tag">UC-M07-03</span>
+      <span class="tag">FR-M07-05</span>
+    </div>
+    <div id="perm-info" class="perm-bar"></div>
+  </div>
+  <div id="denied" class="denied-panel"></div>
+  <div class="screen-content">
+
+    <div class="card">
+      <h2>Quy tắc nhắc tự động</h2>
+      <div class="table-wrap"><table class="data" id="tbl-qt">
+        <thead><tr><th>Quy tắc</th><th>Thời điểm gửi</th><th>Kênh</th><th>Bật</th></tr></thead>
+        <tbody>
+          <tr><td>Nhắc lịch học</td><td>Trước buổi học 1 ngày</td><td>Zalo, dự phòng SMS</td><td><label><input type="checkbox" checked data-act="sua" aria-label="Bật nhắc lịch học"> Bật</label></td></tr>
+          <tr><td>Nhắc học phí trước hạn</td><td>Trước hạn nộp 3 ngày</td><td>Zalo, dự phòng SMS</td><td><label><input type="checkbox" checked data-act="sua" aria-label="Bật nhắc học phí trước hạn"> Bật</label></td></tr>
+          <tr><td>Nhắc học phí sau hạn</td><td>Sau hạn nộp 1 ngày và 7 ngày</td><td>Zalo, dự phòng SMS</td><td><label><input type="checkbox" checked data-act="sua" aria-label="Bật nhắc học phí sau hạn"> Bật</label></td></tr>
+          <tr><td>Nhắc lịch thi thử</td><td>Trước buổi thi thử 3 ngày</td><td>Email</td><td><label><input type="checkbox" data-act="sua" aria-label="Bật nhắc lịch thi thử"> Bật</label></td></tr>
+        </tbody>
+      </table></div>
+      <p class="small muted">Có thể bật hoặc tắt từng quy tắc. Ví dụ nhắc học phí đợt 2 của Hồ Tuấn Kiệt (hạn 05 tháng 11): nhắc vào ngày 02, 06 và 12 tháng 11.</p>
+    </div>
+    <div class="card">
+      <h2>Tính thời điểm gửi nhắc lịch học</h2>
+      <div class="form-grid">
+        <div class="field"><label for="g-ngay">Ngày học</label><input id="g-ngay" type="date" value="2026-11-12"></div>
+        <div class="field"><label for="g-gio">Giờ học</label><input id="g-gio" type="time" value="18:30"></div>
+      </div>
+      <div class="form-actions"><button class="btn" type="button" id="g-tinh" data-act="sua">Tính thời điểm gửi</button></div>
+      <div id="g-msg" class="alert info" style="margin-top:10px" aria-live="polite">Ví dụ theo FR-M07-05: lớp học lúc 18:30 ngày 12 thì nhắc gửi lúc 18:30 ngày 11; quy tắc rơi vào 22:00 được dời sang 07:00.</div>
+      <p class="small muted">Nhắc lịch học gửi trước buổi học 1 ngày; không gửi trong khung giờ yên lặng từ 21:00 đến 07:00 mà dời sang 07:00 hôm sau.</p>
+      <div class="toolbar"><a class="btn accent" href="scr-m07-03.html">Bước tiếp theo: lịch sử và trạng thái gửi</a></div>
+    </div>
+<script>
+(function () {
+  function p2(n) { return ('0' + n).slice(-2); }
+  document.getElementById('g-tinh').addEventListener('click', function () {
+    var d = document.getElementById('g-ngay').value.split('-'), t = document.getElementById('g-gio').value.split(':');
+    if (d.length < 3 || t.length < 2) { U.setMsg('g-msg', 'bad', 'Nhập đủ ngày học và giờ học.'); return; }
+    var dt = new Date(Date.UTC(+d[0], +d[1] - 1, +d[2] - 1, +t[0], +t[1]));
+    var h = dt.getUTCHours(), moved = false;
+    if (h >= 21) { dt = new Date(Date.UTC(dt.getUTCFullYear(), dt.getUTCMonth(), dt.getUTCDate() + 1, 7, 0)); moved = true; }
+    else if (h < 7) { dt = new Date(Date.UTC(dt.getUTCFullYear(), dt.getUTCMonth(), dt.getUTCDate(), 7, 0)); moved = true; }
+    var s = p2(dt.getUTCHours()) + ':' + p2(dt.getUTCMinutes()) + ' ngày ' + p2(dt.getUTCDate()) + '/' + p2(dt.getUTCMonth() + 1);
+    U.setMsg('g-msg', moved ? 'warn' : 'ok', 'Gửi lúc ' + s + (moved ? '. Thời điểm gốc nằm trong khung giờ yên lặng 21:00 đến 07:00 nên được dời sang 07:00.' : ' (trước buổi học 1 ngày).'));
+  });
+})();
+</script>
+
+  </div>
+</main>
+</div>
+<script src="../assets/ux-v2.js"></script>
+<script src="../assets/zenith.js"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCR-M02-02 - Thời khóa biểu</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/ux-v2.css">
+<link rel="stylesheet" href="../assets/zenith.css">
+<link rel="stylesheet" href="../assets/zenith-today.css">
+<script src="../assets/permissions.js"></script>
+<script src="../assets/app.js"></script>
+</head>
+<body data-root=".." data-module="M02" data-scr="SCR-M02-02">
+<div class="demo-banner" role="note"><strong>Dữ liệu minh họa</strong>: tên, số điện thoại, email và số tiền trên màn hình này là dữ liệu giả, không phải thông tin thật.</div>
+<header class="topbar">
+  <a class="brand" href="../index.html">Quản lý lớp học<small>Trung tâm tiếng Nhật - bản mockup</small></a>
+  <span class="spacer"></span>
+  <div id="role-bar"></div>
+  <a class="btn-home" href="../index.html">Về trang chọn vai trò</a>
+</header>
+<div class="app">
+<nav class="sidenav" id="module-nav" aria-label="Module"></nav>
+<main class="main">
+  <div class="page-head">
+    <h1>Thời khóa biểu</h1>
+    <p class="muted" style="margin-bottom:0">M02: Quản lý lớp học, khóa học, thời khóa biểu. Lập và điều chỉnh thời khóa biểu, cảnh báo xung đột, xem lịch theo lớp, giáo viên, phòng.</p>
+    <div class="meta" aria-label="Mã liên quan">
+      <span class="tag code">SCR-M02-02</span>
+      <span class="tag">US-M02-03</span>
+      <span class="tag">US-M02-04</span>
+      <span class="tag">UC-M02-03</span>
+      <span class="tag">UC-M02-04</span>
+      <span class="tag">FR-M02-04</span>
+      <span class="tag">FR-M02-05</span>
+      <span class="tag">FR-M02-06</span>
+    </div>
+    <div id="perm-info" class="perm-bar"></div>
+  </div>
+  <div id="denied" class="denied-panel"></div>
+  <div class="screen-content">
+
+    <div class="card">
+      <div class="toolbar">
+        <label for="v-lop" class="small">Lớp</label><select id="v-lop" style="font:inherit;padding:6px 8px;border:1px solid #b7bec7;border-radius:6px;min-height:36px;"><option>Tất cả lớp</option><option>N5-K01</option><option>N4-K01</option><option>N3-K01</option></select>
+        <label for="v-gv" class="small">Giáo viên</label><select id="v-gv" style="font:inherit;padding:6px 8px;border:1px solid #b7bec7;border-radius:6px;min-height:36px;"><option>Tất cả</option><option>Đỗ Minh Quân</option><option>Tanaka Yuki</option><option>Sato Haruka</option></select>
+        <label for="v-ph" class="small">Phòng</label><select id="v-ph" style="font:inherit;padding:6px 8px;border:1px solid #b7bec7;border-radius:6px;min-height:36px;"><option>Tất cả</option><option>P101</option><option>P102</option><option>P103</option></select>
+        <span class="grow"></span>
+        <span class="tag">Tuần 02/11/2026 - 07/11/2026</span>
+      </div>
+      <p class="small"><span class="badge info">Buổi thường</span> <span class="badge warn">Buổi dạy bù hoặc đổi phòng</span> <span class="badge muted">Buổi nghỉ</span> <span class="badge bad">Xung đột</span></p>
+      <div class="table-wrap">
+      <div class="cal" role="table" aria-label="Thời khóa biểu tuần">
+        <div class="h" role="columnheader">Giờ</div><div class="h" role="columnheader">Thứ hai 02/11</div><div class="h" role="columnheader">Thứ ba 03/11</div><div class="h" role="columnheader">Thứ tư 04/11</div><div class="h" role="columnheader">Thứ năm 05/11</div><div class="h" role="columnheader">Thứ sáu 06/11</div><div class="h" role="columnheader">Thứ bảy 07/11</div>
+
+        <div class="t">08:00-09:30</div><div></div><div></div><div></div><div></div><div></div>
+        <div><div class="ev ">N3-K01<br>Sato Haruka, P101</div><div class="ev ">N5-K02<br>Phạm Thị Hương, P102</div></div>
+
+        <div class="t">09:45-11:15</div><div></div><div></div><div></div><div></div><div></div>
+        <div><div class="ev make">N4-K01 (dạy bù)<br>Tanaka Yuki, P102</div></div>
+
+        <div class="t">18:00-19:30</div>
+        <div><div class="ev ">N4-K01<br>Tanaka Yuki, P102</div><div class="ev clash">Đề xuất N3-K02, 19:00-20:30<br>Trùng giáo viên Tanaka Yuki</div></div>
+        <div><div class="ev make">N5-K01<br>Đỗ Minh Quân, <strong>P103</strong> (đổi từ P101)</div></div>
+        <div><div class="ev ">N4-K01<br>Tanaka Yuki, P102</div></div>
+        <div><div class="ev off">N5-K01<br>Đỗ Minh Quân, P101</div><div class="small muted">Buổi nghỉ</div></div>
+        <div><div class="ev ">N3-K01<br>Sato Haruka, P101</div></div>
+        <div></div>
+
+        <div class="t">19:45-21:15</div><div></div><div></div><div></div><div></div><div></div><div></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="grid c2">
+      <div class="card">
+        <h2>Lập lịch học lặp theo tuần</h2>
+        <div class="alert bad" role="alert"><strong>Xung đột lịch.</strong> Giáo viên Tanaka Yuki đã dạy lớp N4-K01 vào thứ hai 18:00-19:30; lịch mới 19:00-20:30 trùng 30 phút. Chưa thể lưu.</div>
+        <form data-demo="Đã kiểm tra xung đột và lưu lịch (minh họa)">
+          <div class="form-grid">
+            <div class="field"><label for="s-lop">Lớp</label><select id="s-lop"><option>N3-K02</option></select></div>
+            <div class="field"><label for="s-gv">Giáo viên</label><select id="s-gv"><option>Tanaka Yuki</option><option>Sato Haruka</option></select></div>
+            <div class="field"><label for="s-thu">Thứ</label><select id="s-thu"><option>Thứ hai</option><option>Thứ ba</option></select></div>
+            <div class="field"><label for="s-ph">Phòng</label><select id="s-ph"><option>P103</option><option>P102</option></select></div>
+            <div class="field"><label for="s-bd">Giờ bắt đầu</label><input id="s-bd" type="time" value="19:00"></div>
+            <div class="field"><label for="s-kt">Giờ kết thúc</label><input id="s-kt" type="time" value="20:30"></div>
+          </div>
+          <button class="btn" type="submit" data-act="tao">Kiểm tra và lưu lịch</button>
+        </form>
+      </div>
+      <div class="card">
+        <h2>Thay đổi từng buổi</h2>
+        <p class="small muted">Mỗi buổi học là một bản ghi riêng; mọi thay đổi lưu người sửa, thời điểm và lý do, và tạo thông báo cho học viên và phụ huynh trong 30 phút.</p>
+        <form data-demo="Đã lưu thay đổi buổi và tạo thông báo (minh họa)">
+          <div class="form-grid">
+            <div class="field"><label for="b-buoi">Buổi</label><select id="b-buoi"><option>N5-K01, 2026-11-03</option><option>N5-K01, 2026-11-05</option></select></div>
+            <div class="field"><label for="b-loai">Thay đổi</label><select id="b-loai"><option>Đổi phòng</option><option>Đánh dấu buổi nghỉ</option><option>Buổi dạy bù</option><option>Đổi giáo viên</option></select></div>
+            <div class="field" style="grid-column:1/-1"><label for="b-ld">Lý do *</label><input id="b-ld" value="Phòng P101 bảo trì máy chiếu"></div>
+          </div>
+          <button class="btn" type="submit" data-act="sua">Lưu thay đổi</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</main>
+</div>
+<script src="../assets/ux-v2.js"></script>
+<script src="../assets/zenith.js"></script>
+</body>
+</html>

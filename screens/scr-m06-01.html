@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCR-M06-01 - Bài tập</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/ux-v2.css">
+<link rel="stylesheet" href="../assets/zenith.css">
+<link rel="stylesheet" href="../assets/zenith-today.css">
+<script src="../assets/util.js"></script>
+<script src="../assets/permissions.js"></script>
+<script src="../assets/app.js"></script>
+</head>
+<body data-root=".." data-module="M06" data-scr="SCR-M06-01">
+<div class="demo-banner" role="note"><strong>Dữ liệu minh họa</strong>: tên, số điện thoại, email và số tiền trên màn hình này là dữ liệu giả, không phải thông tin thật.</div>
+<header class="topbar">
+  <a class="brand" href="../index.html">Quản lý lớp học<small>Trung tâm tiếng Nhật - bản mockup</small></a>
+  <span class="spacer"></span>
+  <div id="role-bar"></div>
+  <a class="btn-home" href="../index.html">Về trang chọn vai trò</a>
+</header>
+<div class="app">
+<nav class="sidenav" id="module-nav" aria-label="Module"></nav>
+<main class="main">
+  <div class="page-head">
+    <h1>Bài tập</h1>
+    <p class="muted" style="margin-bottom:0">M06: Bài tập, điểm số, nhận xét. Giao bài tập và theo dõi nộp bài.</p>
+    <div class="meta" aria-label="Mã liên quan">
+      <span class="tag code">SCR-M06-01</span>
+      <span class="tag">US-M06-01</span>
+      <span class="tag">UC-M06-01</span>
+      <span class="tag">FR-M06-01</span>
+      <span class="tag">FR-M06-02</span>
+    </div>
+    <div id="perm-info" class="perm-bar"></div>
+  </div>
+  <div id="denied" class="denied-panel"></div>
+  <div class="screen-content">
+
+    <div class="grid c2">
+      <div class="card">
+        <h2>Giao bài tập cho lớp</h2>
+        <div class="form-grid">
+          <div class="field"><label for="a-lop">Lớp</label><select id="a-lop"><option>N5-K02</option></select></div>
+          <div class="field"><label for="a-gv">Giáo viên</label><select id="a-gv"><option>Phạm Thị Hương</option></select></div>
+          <div class="field" style="grid-column:1/-1"><label for="a-ten">Tiêu đề *</label><input id="a-ten" value="Từ vựng bài 5"></div>
+          <div class="field"><label for="a-ng">Ngày giao</label><input id="a-ng" type="date" value="2026-11-09"></div>
+          <div class="field"><label for="a-han">Hạn nộp sau (ngày)</label><input id="a-han" type="number" min="1" value="3"></div>
+        </div>
+        <div class="form-actions"><button class="btn" type="button" id="a-giao" data-act="tao">Giao bài</button></div>
+        <div id="a-msg" class="alert info" hidden></div>
+        <p class="small muted">Học viên và phụ huynh của lớp nhận thông báo khi có bài mới; bài giao cho đúng lớp mình dạy.</p>
+      </div>
+      <div class="card">
+        <h2>Theo dõi nộp bài</h2>
+        <div class="grid c3" aria-live="polite">
+          <div class="stat"><div class="v" id="n-nop">9</div><div class="l">Đã nộp</div></div>
+          <div class="stat"><div class="v" id="n-chua">3</div><div class="l">Chưa nộp</div></div>
+          <div class="stat"><div class="v" id="n-tl">75%</div><div class="l">Tỉ lệ nộp: 9 / 12</div></div>
+        </div>
+        <p class="small muted">Tỉ lệ nộp = số đã nộp / sĩ số. Ví dụ: lớp 12 học viên có 9 người nộp thì 9 / 12 = 75%, còn 3 người chưa nộp.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="toolbar"><h2 style="margin:0;flex:1">Từ vựng bài 5, hạn nộp 2026-11-12</h2><span class="tag">Hiển thị 6 trên 12 học viên</span></div>
+      <div class="table-wrap"><table class="data" id="tbl-nop">
+        <thead><tr><th>Học viên</th><th>Tình trạng</th><th>Thao tác</th></tr></thead>
+        <tbody>
+          <tr><td>Trần Minh Khang</td><td><span class="badge ok">Đã nộp</span></td><td></td></tr>
+          <tr><td>Phạm Gia Bảo</td><td><span class="badge ok">Đã nộp</span></td><td></td></tr>
+          <tr><td>Võ Ngọc Anh</td><td><span class="badge ok">Đã nộp</span></td><td></td></tr>
+          <tr data-cho="1"><td>Hồ Tuấn Kiệt</td><td><span class="badge bad">Chưa nộp</span></td><td><button class="btn secondary mark" type="button" data-act="sua">Đánh dấu đã nộp</button></td></tr>
+          <tr data-cho="1"><td>Lý Bảo Châu</td><td><span class="badge bad">Chưa nộp</span></td><td><button class="btn secondary mark" type="button" data-act="sua">Đánh dấu đã nộp</button></td></tr>
+          <tr data-cho="1"><td>Nguyễn Hoàng Nam</td><td><span class="badge bad">Chưa nộp</span></td><td><button class="btn secondary mark" type="button" data-act="sua">Đánh dấu đã nộp</button></td></tr>
+        </tbody>
+      </table></div>
+      <div class="toolbar" style="margin-top:12px"><a class="btn accent" href="scr-m06-02.html">Bước tiếp theo: nhập điểm</a></div>
+    </div>
+<script>
+(function () {
+  var nop = 9, tong = 12;
+  function draw() {
+    document.getElementById('n-nop').textContent = nop; document.getElementById('n-chua').textContent = tong - nop;
+    document.getElementById('n-tl').textContent = Math.round(nop / tong * 100) + '%';
+    document.getElementById('n-tl').nextSibling.textContent = 'Tỉ lệ nộp: ' + nop + ' / ' + tong;
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.mark'), function (b) {
+    b.addEventListener('click', function () {
+      var tr = b.parentNode.parentNode; tr.children[1].textContent = ''; var s = document.createElement('span'); s.className = 'badge ok'; s.textContent = 'Đã nộp'; tr.children[1].appendChild(s);
+      b.disabled = true; nop++; draw();
+    });
+  });
+  document.getElementById('a-giao').addEventListener('click', function () {
+    var ten = document.getElementById('a-ten').value.replace(/^\s+|\s+$/g, ''), d = U.num(document.getElementById('a-han').value);
+    if (!ten) { U.setMsg('a-msg', 'bad', 'Tiêu đề bài tập là bắt buộc.'); return; }
+    if (d < 1) { U.setMsg('a-msg', 'bad', 'Hạn nộp phải sau ngày giao ít nhất 1 ngày.'); return; }
+    var p = document.getElementById('a-ng').value.split('-'), dt = new Date(Date.UTC(+p[0], +p[1] - 1, +p[2] + d));
+    var s = dt.getUTCFullYear() + '-' + ('0' + (dt.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + dt.getUTCDate()).slice(-2);
+    U.setMsg('a-msg', 'ok', 'Đã giao bài "' + ten + '" cho lớp N5-K02, hạn nộp ' + s + ' (sau ' + d + ' ngày). Đã tạo thông báo cho học viên và phụ huynh (minh họa).');
+  });
+})();
+</script>
+
+  </div>
+</main>
+</div>
+<script src="../assets/ux-v2.js"></script>
+<script src="../assets/zenith.js"></script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCR-M09-02 - Bảng lương theo kỳ</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/ux-v2.css">
+<link rel="stylesheet" href="../assets/zenith.css">
+<link rel="stylesheet" href="../assets/zenith-today.css">
+<script src="../assets/util.js"></script>
+<script src="../assets/permissions.js"></script>
+<script src="../assets/app.js"></script>
+</head>
+<body data-root=".." data-module="M09" data-scr="SCR-M09-02">
+<div class="demo-banner" role="note"><strong>Dữ liệu minh họa</strong>: tên, số điện thoại, email và số tiền trên màn hình này là dữ liệu giả, không phải thông tin thật.</div>
+<header class="topbar">
+  <a class="brand" href="../index.html">Quản lý lớp học<small>Trung tâm tiếng Nhật - bản mockup</small></a>
+  <span class="spacer"></span>
+  <div id="role-bar"></div>
+  <a class="btn-home" href="../index.html">Về trang chọn vai trò</a>
+</header>
+<div class="app">
+<nav class="sidenav" id="module-nav" aria-label="Module"></nav>
+<main class="main">
+  <div class="page-head">
+    <h1>Bảng lương theo kỳ</h1>
+    <p class="muted" style="margin-bottom:0">M09: Lương giáo viên. Tính lương trong kỳ theo ba cách, phụ cấp trợ giảng, điều chỉnh có lý do, lập, duyệt và đánh dấu đã trả.</p>
+    <div class="meta" aria-label="Mã liên quan">
+      <span class="tag code">SCR-M09-02</span>
+      <span class="tag">US-M09-02</span>
+      <span class="tag">US-M09-03</span>
+      <span class="tag">US-M09-04</span>
+      <span class="tag">UC-M09-02</span>
+      <span class="tag">UC-M09-03</span>
+      <span class="tag">UC-M09-04</span>
+      <span class="tag">FR-M09-02</span>
+      <span class="tag">FR-M09-03</span>
+      <span class="tag">FR-M09-04</span>
+      <span class="tag">FR-M09-05</span>
+      <span class="tag">FR-M09-06</span>
+      <span class="tag">FR-M09-07</span>
+    </div>
+    <div id="perm-info" class="perm-bar"></div>
+  </div>
+  <div id="denied" class="denied-panel"></div>
+  <div class="screen-content">
+
+
+    <div id="m9-lim" class="alert warn" role="alert" hidden><strong>Giới hạn quyền.</strong> Vai trò này không xem được bảng lương của người khác. Xem bảng lương của chính mình tại <a href="scr-m09-03.html">Bảng lương của tôi</a>.</div>
+    <div id="m9-agg" class="card" hidden>
+      <h2>Tổng hợp chi phí lương theo lớp (kỳ tháng 11/2026)</h2>
+      <div class="alert info">Quản lý chỉ xem tổng hợp chi phí lương theo lớp, không xem lương từng cá nhân.</div>
+      <div class="table-wrap"><table class="data">
+        <thead><tr><th>Lớp</th><th class="num">Chi phí lương (đồng)</th></tr></thead>
+        <tbody>
+          <tr><td>N5-K01</td><td class="num">4.800.000</td></tr>
+          <tr><td>N5-K02</td><td class="num">3.600.000</td></tr>
+          <tr><td>N4-K01</td><td class="num">10.000.000</td></tr>
+          <tr><td>N3-K01</td><td class="num">5.500.000</td></tr>
+        </tbody>
+        <tfoot><tr><td><strong>Tổng</strong></td><td class="num"><strong>23.900.000</strong></td></tr></tfoot>
+      </table></div>
+      <p class="small muted">4.800.000 + 3.600.000 + 10.000.000 + 5.500.000 = 23.900.000 đồng.</p>
+    </div>
+
+    <div id="m9-full">
+    <div class="card">
+      <div class="toolbar">
+        <label for="p-ky" class="small">Kỳ</label>
+        <select id="p-ky" style="font:inherit;padding:6px 8px;border:1px solid #b7bec7;border-radius:6px;min-height:36px;"><option>Tháng 11/2026</option></select>
+        <span class="small">Trạng thái:</span> <span class="badge warn" id="p-st">Nháp</span>
+        <span class="grow"></span>
+        <button class="btn secondary" type="button" id="p-lap" data-act="tao">Lập lại từ buổi đã điểm danh</button>
+        <button class="btn" type="button" id="p-duyet" data-act="duyet">Duyệt bảng lương</button>
+        <button class="btn secondary" type="button" id="p-tra" data-act="sua" disabled>Đánh dấu đã trả</button>
+      </div>
+      <div id="p-msg" class="alert info">Duyệt bảng lương do chủ trung tâm thực hiện; kế toán lập bảng, thêm điều chỉnh và đánh dấu đã trả sau khi duyệt.</div>
+      <div class="table-wrap"><table class="data" id="tbl-luong">
+        <thead><tr><th>Giáo viên</th><th>Cách tính và chi tiết</th><th class="num">Lương theo cách tính</th><th class="num">Phụ cấp</th><th class="num">Điều chỉnh</th><th class="num">Tổng (đồng)</th></tr></thead>
+        <tbody></tbody>
+        <tfoot><tr><td colspan="5"><strong>Tổng chi phí lương kỳ</strong></td><td class="num"><strong id="p-tong"></strong></td></tr></tfoot>
+      </table></div>
+      <p class="small muted">Tổng lương = lương theo cách tính + phụ cấp + điều chỉnh. Thuế và bảo hiểm ngoài phạm vi. Ví dụ theo FR-M09-07: kỳ tháng 11 của Phạm Thị Hương là 3.600.000 + phụ cấp 0 + điều chỉnh 0 = 3.600.000 đồng. Buổi chưa điểm danh không tính và được liệt kê để kiểm: kỳ này 2 buổi của lớp N3-K01 chưa điểm danh.</p>
+    </div>
+
+    <div class="grid c2">
+      <div class="card">
+        <h2>Điều chỉnh có lý do</h2>
+        <div class="form-grid">
+          <div class="field"><label for="d-gv">Người nhận</label><select id="d-gv"></select></div>
+          <div class="field"><label for="d-tien">Số tiền (âm là giảm)</label><input id="d-tien" value="-200.000"></div>
+          <div class="field" style="grid-column:1/-1"><label for="d-ld">Lý do (bắt buộc)</label><input id="d-ld" value="Ứng trước"></div>
+          <div class="field"><label for="d-duyet">Người duyệt</label><select id="d-duyet"><option>Mai Thị Oanh</option><option>Cao Thị Thu</option></select></div>
+        </div>
+        <div class="form-actions"><button class="btn secondary" type="button" id="d-them" data-act="sua">Thêm điều chỉnh</button></div>
+        <div id="d-msg" class="alert info" style="margin-top:10px" hidden></div>
+        <p class="small muted">Điều chỉnh sau khi duyệt bảng lương lập thành bản điều chỉnh của kỳ sau. Ví dụ theo FR-M09-06: trợ giảng Vũ Thùy Dương phụ cấp 100.000 đồng mỗi buổi x 10 buổi = 1.000.000 đồng; điều chỉnh giảm 200.000 đồng do ứng trước, người duyệt Mai Thị Oanh.</p>
+      </div>
+      <div class="card">
+        <h2>Máy tính cách tính lương</h2>
+        <div class="tabs" role="tablist" aria-label="Cách tính">
+          <button role="tab" id="y1" aria-selected="true" aria-controls="yp1">Theo giờ</button>
+          <button role="tab" id="y2" aria-selected="false" aria-controls="yp2">Theo lớp</button>
+          <button role="tab" id="y3" aria-selected="false" aria-controls="yp3">Theo khóa</button>
+          <button role="tab" id="y4" aria-selected="false" aria-controls="yp4">Buổi hủy, dạy thay</button>
+        </div>
+        <div id="yp1" class="tab-panel" role="tabpanel" aria-labelledby="y1">
+          <div class="form-grid">
+            <div class="field"><label for="h-buoi">Số buổi đã điểm danh</label><input id="h-buoi" value="12"></div>
+            <div class="field"><label for="h-gio">Giờ mỗi buổi</label><input id="h-gio" value="1,5"></div>
+            <div class="field"><label for="h-muc">Mức mỗi giờ (đồng)</label><input id="h-muc" value="200.000"></div>
+          </div>
+          <div class="alert ok" id="h-kq" aria-live="polite"></div>
+        </div>
+        <div id="yp2" class="tab-panel" role="tabpanel" aria-labelledby="y2" hidden>
+          <div class="form-grid">
+            <div class="field"><label for="l-muc">Mức mỗi lớp mỗi tháng (đồng)</label><input id="l-muc" value="4.000.000"></div>
+            <div class="field"><label for="l-so">Số lớp phụ trách</label><input id="l-so" value="2"></div>
+            <div class="field"><label for="l-da">Lớp thứ hai: buổi đã dạy</label><input id="l-da" value="6"></div>
+            <div class="field"><label for="l-kh">Lớp thứ hai: buổi kế hoạch</label><input id="l-kh" value="8"></div>
+          </div>
+          <div class="alert ok" id="l-kq" aria-live="polite"></div>
+        </div>
+        <div id="yp3" class="tab-panel" role="tabpanel" aria-labelledby="y3" hidden>
+          <div class="form-grid">
+            <div class="field"><label for="k-muc">Mức khóa (đồng)</label><input id="k-muc" value="20.000.000"></div>
+            <div class="field"><label for="k-tong">Tổng số buổi của khóa</label><input id="k-tong" value="24"></div>
+            <div class="field"><label for="k-xong">Buổi hoàn thành trong kỳ</label><input id="k-xong" value="12"></div>
+          </div>
+          <div class="alert ok" id="k-kq" aria-live="polite"></div>
+        </div>
+        <div id="yp4" class="tab-panel" role="tabpanel" aria-labelledby="y4" hidden>
+          <div class="form-grid">
+            <div class="field"><label for="b-loai">Tình huống</label><select id="b-loai"><option value="tt">Hủy do trung tâm</option><option value="gv">Hủy do giáo viên</option><option value="thay">Dạy thay</option></select></div>
+            <div class="field"><label for="b-muc">Mức một buổi 1,5 giờ x 200.000 (đồng)</label><input id="b-muc" value="300.000"></div>
+          </div>
+          <div class="alert ok" id="b-kq" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+    <div class="toolbar"><a class="btn secondary" href="scr-m09-03.html">Xem bảng lương của giáo viên</a></div>
+    </div>
+<script>
+(function () {
+  
+  function dec(x, k) { return (Math.round(x * Math.pow(10, k)) / Math.pow(10, k)).toFixed(k).replace('.', ','); }
+  function pnum(v) { var n = parseFloat(String(v).replace(/\./g, '').replace(',', '.')); return isNaN(n) ? NaN : n; }
+
+  
+  var role = U.role(), full = document.getElementById('m9-full');
+  if (role === 'giao_vien' || role === 'tro_giang') { full.hidden = true; document.getElementById('m9-lim').hidden = false; }
+  else if (role === 'quan_ly') { full.hidden = true; document.getElementById('m9-agg').hidden = false; }
+
+  var $ = U.$;
+  var P = [
+    { ten: 'Phạm Thị Hương', ct: 'Theo giờ: 12 buổi x 1,5 giờ = 18 giờ x 200.000', luong: 3600000, pc: 0, dc: 0 },
+    { ten: 'Đỗ Minh Quân', ct: 'Theo lớp: 2 lớp x 4.000.000', luong: 8000000, pc: 0, dc: 0 },
+    { ten: 'Tanaka Yuki', ct: 'Theo khóa: 20.000.000 x 12 / 24 buổi', luong: 10000000, pc: 0, dc: 0 },
+    { ten: 'Sato Haruka', ct: 'Dạy thay: 5 buổi x 300.000', luong: 1500000, pc: 0, dc: 0 },
+    { ten: 'Vũ Thùy Dương (trợ giảng)', ct: 'Phụ cấp: 10 buổi x 100.000', luong: 0, pc: 1000000, dc: -200000 }
+  ];
+  var state = 'nhap', next = [];
+  function draw() {
+    var tb = document.querySelector('#tbl-luong tbody'), tong = 0; tb.textContent = '';
+    P.forEach(function (p) {
+      var t = p.luong + p.pc + p.dc; tong += t;
+      var tr = document.createElement('tr');
+      [p.ten, p.ct, U.fmt(p.luong), U.fmt(p.pc), U.fmt(p.dc), U.fmt(t)].forEach(function (v, i) { var td = document.createElement('td'); td.textContent = v; if (i >= 2) td.className = 'num'; tr.appendChild(td); });
+      tb.appendChild(tr);
+    });
+    $('p-tong').textContent = U.fmt(tong);
+    var sel = $('d-gv'); if (!sel.options.length) P.forEach(function (p) { var o = document.createElement('option'); o.textContent = p.ten; sel.appendChild(o); sel.value = 'Vũ Thùy Dương (trợ giảng)'; });
+  }
+  function setState(s) {
+    state = s;
+    var b = $('p-st'); b.className = 'badge ' + (s === 'nhap' ? 'warn' : s === 'duyet' ? 'info' : 'ok'); b.textContent = s === 'nhap' ? 'Nháp' : s === 'duyet' ? 'Đã duyệt' : 'Đã trả';
+    var m = window.PERMISSIONS && window.PERMISSIONS.matrix[U.role()] ? window.PERMISSIONS.matrix[U.role()].M09 : null;
+    $('p-tra').disabled = s !== 'duyet' || !m || m.sua === 'khong';
+  }
+  $('p-lap').addEventListener('click', function () {
+    if (state !== 'nhap') { U.setMsg('p-msg', 'bad', 'Bảng lương đã duyệt không sửa trực tiếp; chỉ sửa bằng điều chỉnh ở kỳ sau.'); return; }
+    U.setMsg('p-msg', 'ok', 'Đã lập lại bảng lương từ các buổi đã diễn ra và đã điểm danh (minh họa).');
+  });
+  $('p-duyet').addEventListener('click', function () {
+    if (state !== 'nhap') return;
+    if (U.role() !== 'chu_trung_tam') { U.setMsg('p-msg', 'warn', 'Duyệt bảng lương do chủ trung tâm thực hiện. Đã gửi đề nghị duyệt tới Cao Thị Thu (minh họa).'); return; }
+    setState('duyet'); U.setMsg('p-msg', 'ok', 'Đã duyệt bảng lương kỳ tháng 11. Từ giờ chỉ sửa bằng điều chỉnh ở kỳ sau.');
+  });
+  $('p-tra').addEventListener('click', function () { if (state === 'duyet') { setState('tra'); U.setMsg('p-msg', 'ok', 'Đã đánh dấu đã trả khi kế toán chi (minh họa).'); } });
+  $('d-them').addEventListener('click', function () {
+    var t = U.num($('d-tien').value), ld = $('d-ld').value.replace(/^\s+|\s+$/g, ''), gv = $('d-gv').value;
+    if (!ld) { U.setMsg('d-msg', 'bad', 'Điều chỉnh phải có lý do.'); return; }
+    if (!t) { U.setMsg('d-msg', 'bad', 'Số tiền điều chỉnh phải khác 0.'); return; }
+    if (state !== 'nhap') { next.push([gv, t]); U.setMsg('d-msg', 'warn', 'Bảng lương đã duyệt nên điều chỉnh ' + U.fmt(t) + ' đồng của ' + gv + ' được lập thành bản điều chỉnh của kỳ sau (tháng 12/2026), người duyệt ' + $('d-duyet').value + '.'); return; }
+    P.forEach(function (p) { if (p.ten === gv) p.dc += t; });
+    draw(); U.setMsg('d-msg', 'ok', 'Đã thêm điều chỉnh ' + U.fmt(t) + ' đồng cho ' + gv + ', lý do "' + ld + '", người duyệt ' + $('d-duyet').value + '.');
+  });
+  function calc() {
+    var b = pnum($('h-buoi').value), g = pnum($('h-gio').value), m = pnum($('h-muc').value);
+    $('h-kq').textContent = (b >= 0 && g > 0 && m > 0) ? 'Tiền lương = ' + dec(b * g, (b * g) % 1 ? 1 : 0) + ' giờ x ' + U.fmt(m) + ' = ' + U.fmt(b * g * m) + ' đồng.' : 'Nhập số buổi, giờ mỗi buổi và mức lớn hơn 0.';
+    var lm = pnum($('l-muc').value), ls = pnum($('l-so').value), da = pnum($('l-da').value), kh = pnum($('l-kh').value);
+    if (lm > 0 && ls >= 1 && kh > 0 && da >= 0 && da <= kh) {
+      var full = ls - 1, part = lm * da / kh;
+      $('l-kq').textContent = 'Tiền lương = ' + full + ' x ' + U.fmt(lm) + ' + ' + U.fmt(lm) + ' x ' + da + ' / ' + kh + ' = ' + U.fmt(full * lm) + ' + ' + U.fmt(part) + ' = ' + U.fmt(full * lm + part) + ' đồng. Nếu cả hai lớp dạy đủ: ' + ls + ' x ' + U.fmt(lm) + ' = ' + U.fmt(ls * lm) + ' đồng.';
+    } else $('l-kq').textContent = 'Nhập mức, số lớp, buổi đã dạy không vượt buổi kế hoạch.';
+    var km = pnum($('k-muc').value), kt = pnum($('k-tong').value), kx = pnum($('k-xong').value);
+    if (km > 0 && kt > 0 && kx >= 0 && kx <= kt) $('k-kq').textContent = 'Tiền lương kỳ = ' + U.fmt(km) + ' x ' + kx + ' / ' + kt + ' = ' + U.fmt(km * kx / kt) + ' đồng.';
+    else $('k-kq').textContent = 'Từ chối: buổi hoàn thành vượt tổng số buổi của khóa, tổng các kỳ không vượt mức khóa.';
+    var lo = $('b-loai').value, mu = pnum($('b-muc').value);
+    $('b-kq').textContent = lo === 'tt' ? 'Buổi hủy do trung tâm tính 50%: ' + U.fmt(mu) + ' x 50% = ' + U.fmt(mu / 2) + ' đồng cho giáo viên phụ trách.' : lo === 'gv' ? 'Buổi hủy do giáo viên không tính: 0 đồng.' : 'Giáo viên Sato Haruka dạy thay nhận ' + U.fmt(mu) + ' đồng; giáo viên gốc không nhận buổi này.';
+  }
+  ['h-buoi', 'h-gio', 'h-muc', 'l-muc', 'l-so', 'l-da', 'l-kh', 'k-muc', 'k-tong', 'k-xong', 'b-loai', 'b-muc'].forEach(function (i) { $(i).addEventListener('input', calc); $(i).addEventListener('change', calc); });
+  draw(); setState('nhap'); calc();
+})();
+</script>
+
+  </div>
+</main>
+</div>
+<script src="../assets/ux-v2.js"></script>
+<script src="../assets/zenith.js"></script>
+</body>
+</html>

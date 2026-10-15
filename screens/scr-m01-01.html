@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCR-M01-01 - Danh sách và hồ sơ học viên</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/ux-v2.css">
+<link rel="stylesheet" href="../assets/zenith.css">
+<link rel="stylesheet" href="../assets/zenith-today.css">
+<script src="../assets/permissions.js"></script>
+<script src="../assets/app.js"></script>
+</head>
+<body data-root=".." data-module="M01" data-scr="SCR-M01-01">
+<div class="demo-banner" role="note"><strong>Dữ liệu minh họa</strong>: tên, số điện thoại, email và số tiền trên màn hình này là dữ liệu giả, không phải thông tin thật.</div>
+<header class="topbar">
+  <a class="brand" href="../index.html">Quản lý lớp học<small>Trung tâm tiếng Nhật - bản mockup</small></a>
+  <span class="spacer"></span>
+  <div id="role-bar"></div>
+  <a class="btn-home" href="../index.html">Về trang chọn vai trò</a>
+</header>
+<div class="app">
+<nav class="sidenav" id="module-nav" aria-label="Module"></nav>
+<main class="main">
+  <div class="page-head">
+    <h1>Danh sách và hồ sơ học viên</h1>
+    <p class="muted" style="margin-bottom:0">M01: Quản lý học viên, giáo viên, phụ huynh. Tra cứu học viên, tạo hồ sơ có cảnh báo trùng, liên kết phụ huynh, chuyển trạng thái hồ sơ.</p>
+    <div class="meta" aria-label="Mã liên quan">
+      <span class="tag code">SCR-M01-01</span>
+      <span class="tag">US-M01-01</span>
+      <span class="tag">US-M01-02</span>
+      <span class="tag">UC-M01-01</span>
+      <span class="tag">UC-M01-02</span>
+      <span class="tag">FR-M01-01</span>
+      <span class="tag">FR-M01-02</span>
+      <span class="tag">FR-M01-03</span>
+      <span class="tag">FR-M01-06</span>
+    </div>
+    <div id="perm-info" class="perm-bar"></div>
+  </div>
+  <div id="denied" class="denied-panel"></div>
+  <div class="screen-content">
+
+    <div class="card">
+      <div class="toolbar">
+        <input class="grow" type="search" id="q-hv" data-filter="tbl-hv" placeholder="Tìm theo họ tên, điện thoại, mã hồ sơ (không phân biệt dấu)" aria-label="Tìm học viên" style="font:inherit;padding:7px 10px;border:1px solid #b7bec7;border-radius:6px;min-height:36px;">
+        <select data-filter-col="6" data-filter-table="tbl-hv" aria-label="Lọc theo trạng thái" style="font:inherit;padding:7px 10px;border:1px solid #b7bec7;border-radius:6px;min-height:36px;">
+          <option value="">Mọi trạng thái</option><option>Đang học</option><option>Bảo lưu</option><option>Đã nghỉ</option><option>Hoàn thành khóa</option>
+        </select>
+        <button class="btn" type="button" data-act="tao" data-show="form-hv">Tạo hồ sơ học viên</button>
+      </div>
+      <div class="table-wrap">
+      <table class="data" id="tbl-hv">
+        <thead><tr><th>Mã hồ sơ</th><th>Họ tên</th><th>Ngày sinh</th><th>Điện thoại</th><th>Trình độ JLPT</th><th>Phụ huynh liên kết</th><th>Trạng thái</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">HV0001</td><td>Trần Minh Khang</td><td class="mono">2001-04-12</td><td class="mono">0900000001</td><td>N5 (初級)</td><td class="muted">Không cần (từ 18 tuổi)</td><td><span class="badge ok">Đang học</span></td></tr>
+          <tr class="is-selected"><td class="mono">HV0002</td><td>Nguyễn Hoàng Nam <span class="tag">14 tuổi</span></td><td class="mono">2012-05-20</td><td class="mono">0900000003</td><td>N5 (初級)</td><td>Nguyễn Văn Hùng (liên hệ chính)</td><td><span class="badge ok">Đang học</span></td></tr>
+          <tr><td class="mono">HV0003</td><td>Lý Bảo Châu <span class="tag">12 tuổi</span></td><td class="mono">2014-03-08</td><td class="mono">0900000007</td><td>N5 (初級)</td><td>Lý Thị Mai (liên hệ chính)</td><td><span class="badge ok">Đang học</span></td></tr>
+          <tr><td class="mono">HV0004</td><td>Hồ Tuấn Kiệt <span class="tag">16 tuổi</span></td><td class="mono">2010-09-30</td><td class="mono">0900000009</td><td>N4 (初級)</td><td>Hồ Thị Lan (liên hệ chính)</td><td><span class="badge ok">Đang học</span></td></tr>
+          <tr><td class="mono">HV0005</td><td>Lê Thu Hà</td><td class="mono">1998-11-03</td><td class="mono">0900000031</td><td>N4 (初級)</td><td class="muted">Không cần (từ 18 tuổi)</td><td><span class="badge warn">Bảo lưu</span></td></tr>
+          <tr><td class="mono">HV0006</td><td>Phạm Gia Bảo</td><td class="mono">1995-06-21</td><td class="mono">0900000032</td><td>N3 (中級)</td><td class="muted">Không cần (từ 18 tuổi)</td><td><span class="badge ok">Đang học</span></td></tr>
+          <tr><td class="mono">HV0007</td><td>Võ Ngọc Anh</td><td class="mono">2000-01-15</td><td class="mono">0900000033</td><td>N3 (中級)</td><td class="muted">Không cần (từ 18 tuổi)</td><td><span class="badge ok">Đang học</span></td></tr>
+          <tr><td class="mono">HV0008</td><td>Đặng Quốc Huy</td><td class="mono">1992-08-09</td><td class="mono">0900000034</td><td>N2 (上級)</td><td class="muted">Không cần (từ 18 tuổi)</td><td><span class="badge muted">Hoàn thành khóa</span></td></tr>
+          <tr><td class="mono">HV0009</td><td>Bùi Khánh Linh</td><td class="mono">2003-12-27</td><td class="mono">0900000035</td><td>N5 (初級)</td><td class="muted">Không cần (từ 18 tuổi)</td><td><span class="badge bad">Đã nghỉ</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <div class="card" id="form-hv" hidden>
+      <h2>Tạo hồ sơ học viên</h2>
+      <div class="alert warn" role="alert"><strong>Cảnh báo hồ sơ trùng.</strong> Số điện thoại 0900000001 đã có ở hồ sơ HV0001 (Trần Minh Khang). Bạn có thể mở hồ sơ cũ hoặc xác nhận để vẫn tạo hồ sơ mới.</div>
+      <form data-demo="Đã lưu hồ sơ (minh họa, không ghi dữ liệu thật)">
+        <div class="form-grid">
+          <div class="field"><label for="f-ten">Họ tên *</label><input id="f-ten" value="Trần Minh Khang"></div>
+          <div class="field"><label for="f-nj">Tên chữ Nhật (Unicode)</label><input id="f-nj" class="jp" placeholder="Có thể để trống"><span class="hint">Hỗ trợ chữ Hán, hiragana, katakana.</span></div>
+          <div class="field"><label for="f-ns">Ngày sinh *</label><input id="f-ns" type="date" value="2001-04-12"></div>
+          <div class="field"><label for="f-dt">Điện thoại (10 chữ số)</label><input id="f-dt" value="0900000001"></div>
+          <div class="field"><label for="f-em">Email</label><input id="f-em" value="hocvien01@example.com"></div>
+          <div class="field"><label for="f-td">Trình độ hiện tại</label><select id="f-td"><option>N5 (初級)</option><option>N4 (初級)</option><option>N3 (中級)</option><option>N2 (上級)</option><option>N1 (上級)</option></select></div>
+        </div>
+        <div class="form-actions">
+          <button class="btn" type="submit" data-act="tao">Xác nhận và tạo hồ sơ</button>
+          <button class="btn secondary" type="button" data-toast="Mở hồ sơ HV0001 (minh họa)">Mở hồ sơ HV0001</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="card">
+      <h2>Hồ sơ: Nguyễn Hoàng Nam (HV0002)</h2>
+      <div class="tabs" role="tablist" aria-label="Chi tiết hồ sơ">
+        <button role="tab" id="t1" aria-selected="true" aria-controls="p1">Phụ huynh liên kết</button>
+        <button role="tab" id="t2" aria-selected="false" aria-controls="p2">Trạng thái hồ sơ</button>
+      </div>
+      <div id="p1" class="tab-panel" role="tabpanel" aria-labelledby="t1">
+        <div class="alert ok">Học viên dưới 18 tuổi cần ít nhất 1 phụ huynh trước khi xếp lớp. Hồ sơ này đã đủ điều kiện.</div>
+        <div class="table-wrap"><table class="data">
+          <thead><tr><th>Phụ huynh</th><th>Quan hệ</th><th>Điện thoại</th><th>Liên hệ chính</th><th>Người thanh toán</th></tr></thead>
+          <tbody><tr><td>Nguyễn Văn Hùng</td><td>Bố</td><td class="mono">0900000002</td><td><span class="badge ok">Có</span></td><td><span class="badge ok">Có</span></td></tr></tbody>
+        </table></div>
+        <div class="toolbar"><button class="btn secondary" type="button" data-act="tao" data-toast="Đã mở biểu mẫu thêm phụ huynh (minh họa)">Thêm phụ huynh</button>
+        <a class="btn accent" href="scr-m02-01.html">Bước tiếp theo: xếp lớp cho học viên</a></div>
+      </div>
+      <div id="p2" class="tab-panel" role="tabpanel" aria-labelledby="t2" hidden>
+        <p>Trạng thái hiện tại: <span class="badge ok">Đang học</span>. Chuyển được sang Bảo lưu, Đã nghỉ, Hoàn thành khóa; mọi lần chuyển lưu lý do, người thực hiện và thời điểm.</p>
+        <form data-demo="Đã chuyển trạng thái (minh họa)">
+          <div class="form-grid">
+            <div class="field"><label for="f-tt">Trạng thái mới</label><select id="f-tt"><option>Bảo lưu</option><option>Đã nghỉ</option><option>Hoàn thành khóa</option></select></div>
+            <div class="field"><label for="f-ld">Lý do *</label><input id="f-ld" value="Gia đình đi công tác 2 tháng"></div>
+          </div>
+          <button class="btn" type="submit" data-act="sua">Chuyển trạng thái</button>
+        </form>
+        <h3 style="margin-top:14px">Lịch sử trạng thái</h3>
+        <div class="table-wrap"><table class="data"><thead><tr><th>Thời điểm</th><th>Từ</th><th>Sang</th><th>Người thực hiện</th><th>Lý do</th></tr></thead>
+          <tbody><tr><td class="mono">2026-09-01 09:10</td><td>(mới tạo)</td><td>Đang học</td><td>Đinh Văn Lộc (Quản lý)</td><td>Nhập học khóa Sơ cấp N5</td></tr></tbody></table></div>
+      </div>
+    </div>
+
+  </div>
+</main>
+</div>
+<script src="../assets/ux-v2.js"></script>
+<script src="../assets/zenith.js"></script>
+</body>
+</html>

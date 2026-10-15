@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCR-M09-03 - Bảng lương của tôi</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/ux-v2.css">
+<link rel="stylesheet" href="../assets/zenith.css">
+<link rel="stylesheet" href="../assets/zenith-today.css">
+<script src="../assets/util.js"></script>
+<script src="../assets/permissions.js"></script>
+<script src="../assets/app.js"></script>
+</head>
+<body data-root=".." data-module="M09" data-scr="SCR-M09-03">
+<div class="demo-banner" role="note"><strong>Dữ liệu minh họa</strong>: tên, số điện thoại, email và số tiền trên màn hình này là dữ liệu giả, không phải thông tin thật.</div>
+<header class="topbar">
+  <a class="brand" href="../index.html">Quản lý lớp học<small>Trung tâm tiếng Nhật - bản mockup</small></a>
+  <span class="spacer"></span>
+  <div id="role-bar"></div>
+  <a class="btn-home" href="../index.html">Về trang chọn vai trò</a>
+</header>
+<div class="app">
+<nav class="sidenav" id="module-nav" aria-label="Module"></nav>
+<main class="main">
+  <div class="page-head">
+    <h1>Bảng lương của tôi</h1>
+    <p class="muted" style="margin-bottom:0">M09: Lương giáo viên. Giáo viên xem bảng lương của chính mình.</p>
+    <div class="meta" aria-label="Mã liên quan">
+      <span class="tag code">SCR-M09-03</span>
+      <span class="tag">US-M09-05</span>
+      <span class="tag">UC-M09-05</span>
+      <span class="tag">FR-M09-08</span>
+    </div>
+    <div id="perm-info" class="perm-bar"></div>
+  </div>
+  <div id="denied" class="denied-panel"></div>
+  <div class="screen-content">
+
+    <div id="o-prev" class="alert info" hidden></div>
+    <div class="card">
+      <div class="toolbar">
+        <label for="o-ky" class="small">Kỳ</label>
+        <select id="o-ky" style="font:inherit;padding:6px 8px;border:1px solid #b7bec7;border-radius:6px;min-height:36px;"><option value="11">Tháng 11/2026</option><option value="12">Tháng 12/2026</option></select>
+        <span class="grow"></span><span class="small">Người xem:</span> <strong id="o-ten"></strong>
+      </div>
+      <div id="o-chua" class="alert warn" hidden><strong>Chưa xem được.</strong> Bảng lương kỳ này chưa được duyệt. Chỉ xem sau khi bảng lương đã duyệt.</div>
+      <div id="o-nd">
+        <div class="grid c3" aria-live="polite">
+          <div class="stat"><div class="v" id="o-luong">0</div><div class="l">Lương theo cách tính (đồng)</div></div>
+          <div class="stat"><div class="v" id="o-pc">0</div><div class="l">Phụ cấp và điều chỉnh (đồng)</div></div>
+          <div class="stat"><div class="v" id="o-tong">0</div><div class="l">Tổng nhận (đồng)</div></div>
+        </div>
+        <h2 style="margin-top:14px">Buổi cấu thành lương</h2>
+        <div class="table-wrap"><table class="data"><thead><tr><th>Ngày</th><th>Lớp</th><th>Loại</th><th class="num">Số giờ</th><th class="num">Thành tiền (đồng)</th></tr></thead><tbody id="o-bang"></tbody></table></div>
+        <p class="small muted" id="o-ct"></p>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Thắc mắc về bảng lương</h2>
+      <div class="field"><label for="o-hoi">Nội dung thắc mắc</label><textarea id="o-hoi" rows="2" style="font:inherit;padding:7px 10px;border:1px solid #b7bec7;border-radius:6px;width:100%"></textarea></div>
+      <div class="form-actions"><button class="btn secondary" type="button" id="o-gui" data-act="xem">Gửi thắc mắc cho kế toán</button></div>
+      <div id="o-msg" class="alert info" style="margin-top:10px" hidden></div>
+      <p class="small muted">Giáo viên chỉ xem bảng của mình và chỉ xem sau khi được duyệt; thắc mắc ghi nhận để kế toán xử lý. Ví dụ theo FR-M09-08: giáo viên Sato Haruka xem bảng lương tháng 11 và thấy 5 buổi dạy thay.</p>
+    </div>
+<script>
+(function () {
+  
+  function dec(x, k) { return (Math.round(x * Math.pow(10, k)) / Math.pow(10, k)).toFixed(k).replace('.', ','); }
+  function pnum(v) { var n = parseFloat(String(v).replace(/\./g, '').replace(',', '.')); return isNaN(n) ? NaN : n; }
+
+  var $ = U.$, role = U.role();
+  var D = role === 'tro_giang'
+    ? { ten: 'Vũ Thùy Dương', luong: 0, pc: 800000, rows: [['Ngày 02 đến 28/11', 'N5-K01', 'Phụ cấp trợ giảng, 10 buổi x 100.000', '', 1000000], ['Điều chỉnh', '', 'Giảm do ứng trước, người duyệt Mai Thị Oanh', '', -200000]], ct: 'Phụ cấp 10 buổi x 100.000 = 1.000.000, điều chỉnh -200.000, tổng 800.000 đồng.' }
+    : { ten: 'Sato Haruka', luong: 1500000, pc: 0, rows: [['02/11', 'N3-K01', 'Dạy thay', '1,5', 300000], ['05/11', 'N3-K01', 'Dạy thay', '1,5', 300000], ['09/11', 'N3-K01', 'Dạy thay', '1,5', 300000], ['11/11', 'N3-K01', 'Dạy thay', '1,5', 300000], ['13/11', 'N3-K01', 'Dạy thay', '1,5', 300000]], ct: '5 buổi dạy thay x 1,5 giờ x 200.000 = 5 x 300.000 = 1.500.000 đồng. Buổi dạy thay tính cho giáo viên dạy thay và không tính cho giáo viên gốc.' };
+  $('o-ten').textContent = D.ten;
+  if (role !== 'giao_vien' && role !== 'tro_giang') { $('o-prev').hidden = false; $('o-prev').textContent = 'Bản xem trước theo vai trò đang chọn: hiển thị bảng lương của giáo viên Sato Haruka. Kế toán xem được các buổi cấu thành của mọi giáo viên ở màn hình bảng lương theo kỳ.'; }
+  function draw() {
+    var ok = $('o-ky').value === '11';
+    $('o-chua').hidden = ok; $('o-nd').hidden = !ok;
+    if (!ok) return;
+    var t = D.luong + D.pc, body = $('o-bang'); body.textContent = '';
+    D.rows.forEach(function (r) {
+      var tr = document.createElement('tr');
+      r.forEach(function (v, i) { var td = document.createElement('td'); td.textContent = i === 4 ? U.fmt(v) : v; if (i >= 3) td.className = 'num'; tr.appendChild(td); });
+      body.appendChild(tr);
+    });
+    if (role === 'tro_giang') { $('o-luong').textContent = '0'; $('o-pc').textContent = '800.000'; $('o-tong').textContent = '800.000'; }
+    else { $('o-luong').textContent = U.fmt(D.luong); $('o-pc').textContent = '0'; $('o-tong').textContent = U.fmt(t); }
+    $('o-ct').textContent = D.ct;
+  }
+  $('o-ky').addEventListener('change', draw); draw();
+  $('o-gui').addEventListener('click', function () {
+    var v = $('o-hoi').value.replace(/^\s+|\s+$/g, '');
+    if (!v) { U.setMsg('o-msg', 'bad', 'Nhập nội dung thắc mắc trước khi gửi.'); return; }
+    U.setMsg('o-msg', 'ok', 'Đã ghi nhận thắc mắc để kế toán Mai Thị Oanh xử lý (minh họa).');
+  });
+})();
+</script>
+
+  </div>
+</main>
+</div>
+<script src="../assets/ux-v2.js"></script>
+<script src="../assets/zenith.js"></script>
+</body>
+</html>

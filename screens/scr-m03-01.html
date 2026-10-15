@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCR-M03-01 - Điểm danh lớp</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/ux-v2.css">
+<link rel="stylesheet" href="../assets/zenith.css">
+<link rel="stylesheet" href="../assets/zenith-today.css">
+<script src="../assets/util.js"></script>
+<script src="../assets/permissions.js"></script>
+<script src="../assets/app.js"></script>
+</head>
+<body data-root=".." data-module="M03" data-scr="SCR-M03-01">
+<div class="demo-banner" role="note"><strong>Dữ liệu minh họa</strong>: tên, số điện thoại, email và số tiền trên màn hình này là dữ liệu giả, không phải thông tin thật.</div>
+<header class="topbar">
+  <a class="brand" href="../index.html">Quản lý lớp học<small>Trung tâm tiếng Nhật - bản mockup</small></a>
+  <span class="spacer"></span>
+  <div id="role-bar"></div>
+  <a class="btn-home" href="../index.html">Về trang chọn vai trò</a>
+</header>
+<div class="app">
+<nav class="sidenav" id="module-nav" aria-label="Module"></nav>
+<main class="main">
+  <div class="page-head">
+    <h1>Điểm danh lớp</h1>
+    <p class="muted" style="margin-bottom:0">M03: Điểm danh. Điểm danh cả lớp một thao tác, sửa trong thời hạn có lưu vết, đủ năm trạng thái.</p>
+    <div class="meta" aria-label="Mã liên quan">
+      <span class="tag code">SCR-M03-01</span>
+      <span class="tag">US-M03-01</span>
+      <span class="tag">US-M03-02</span>
+      <span class="tag">UC-M03-01</span>
+      <span class="tag">UC-M03-02</span>
+      <span class="tag">FR-M03-01</span>
+      <span class="tag">FR-M03-02</span>
+      <span class="tag">FR-M03-03</span>
+    </div>
+    <div id="perm-info" class="perm-bar"></div>
+  </div>
+  <div id="denied" class="denied-panel"></div>
+  <div class="screen-content">
+
+    <div class="card">
+      <div class="toolbar">
+        <label for="lop-dd" class="small">Lớp</label><select id="lop-dd" style="font:inherit;padding:6px 8px;border:1px solid #b7bec7;border-radius:6px;min-height:36px;"><option>N5-K01</option></select>
+        <label for="buoi-dd" class="small">Buổi</label><select id="buoi-dd" style="font:inherit;padding:6px 8px;border:1px solid #b7bec7;border-radius:6px;min-height:36px;"><option>Buổi 7, 2026-11-03, 18:00-19:30</option></select>
+        <span class="grow"></span>
+        <span class="tag">Giáo viên: Đỗ Minh Quân</span>
+      </div>
+      <div class="alert info">Bản minh họa rút gọn: hiển thị 6 học viên đại diện cho lớp 20 học viên. Mặc định mọi học viên là có mặt; chỉ chỉnh các trường hợp còn lại rồi lưu cả lớp bằng 1 thao tác (mục tiêu: điểm danh lớp 20 học viên trong 2 phút).</div>
+      <div class="toolbar">
+        <button class="btn secondary" type="button" id="btn-all" data-act="tao">Đánh dấu có mặt cả lớp</button>
+        <button class="btn" type="button" id="btn-save" data-act="tao">Lưu điểm danh cả lớp</button>
+        <span id="sum" class="small" aria-live="polite"></span>
+      </div>
+      <div id="att-msg" class="alert ok" hidden></div>
+      <div class="table-wrap">
+        <table class="data" id="tbl-att">
+          <thead><tr><th>Mã hồ sơ</th><th>Học viên</th><th>Trạng thái buổi này</th></tr></thead>
+          <tbody>
+          <tr data-hv="HV0001"><td class="mono">HV0001</td><td>Trần Minh Khang</td><td><select class="att" aria-label="Trạng thái của Trần Minh Khang" style="font:inherit;padding:6px 8px;border:1px solid #b7bec7;border-radius:6px;min-height:36px;"><option selected>Có mặt</option><option>Vắng có phép</option><option>Vắng không phép</option><option>Đi muộn</option><option>Học bù</option></select></td></tr>
+          <tr data-hv="HV0002"><td class="mono">HV0002</td><td>Nguyễn Hoàng Nam</td><td><select class="att" aria-label="Trạng thái của Nguyễn Hoàng Nam" style="font:inherit;padding:6px 8px;border:1px solid #b7bec7;border-radius:6px;min-height:36px;"><option selected>Có mặt</option><option>Vắng có phép</option><option>Vắng không phép</option><option>Đi muộn</option><option>Học bù</option></select></td></tr>
+          <tr data-hv="HV0003"><td class="mono">HV0003</td><td>Lý Bảo Châu</td><td><select class="att" aria-label="Trạng thái của Lý Bảo Châu" style="font:inherit;padding:6px 8px;border:1px solid #b7bec7;border-radius:6px;min-height:36px;"><option>Có mặt</option><option>Vắng có phép</option><option>Vắng không phép</option><option selected>Đi muộn</option><option>Học bù</option></select></td></tr>
+          <tr data-hv="HV0004"><td class="mono">HV0004</td><td>Hồ Tuấn Kiệt</td><td><select class="att" aria-label="Trạng thái của Hồ Tuấn Kiệt" style="font:inherit;padding:6px 8px;border:1px solid #b7bec7;border-radius:6px;min-height:36px;"><option>Có mặt</option><option selected>Vắng có phép</option><option>Vắng không phép</option><option>Đi muộn</option><option>Học bù</option></select></td></tr>
+          <tr data-hv="HV0006"><td class="mono">HV0006</td><td>Phạm Gia Bảo</td><td><select class="att" aria-label="Trạng thái của Phạm Gia Bảo" style="font:inherit;padding:6px 8px;border:1px solid #b7bec7;border-radius:6px;min-height:36px;"><option selected>Có mặt</option><option>Vắng có phép</option><option>Vắng không phép</option><option>Đi muộn</option><option>Học bù</option></select></td></tr>
+          <tr data-hv="HV0007"><td class="mono">HV0007</td><td>Võ Ngọc Anh</td><td><select class="att" aria-label="Trạng thái của Võ Ngọc Anh" style="font:inherit;padding:6px 8px;border:1px solid #b7bec7;border-radius:6px;min-height:36px;"><option selected>Có mặt</option><option>Vắng có phép</option><option>Vắng không phép</option><option>Đi muộn</option><option>Học bù</option></select></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small muted">Năm trạng thái: có mặt, vắng có phép, vắng không phép, đi muộn, học bù. Vắng có phép tự đưa học viên vào danh sách cần học bù. Ví dụ theo FR-M03-01: lớp N5-K01 có 20 học viên, kết quả 18 có mặt, 1 vắng có phép, 1 đi muộn. Trợ giảng chỉ điểm danh lớp được phân công; chỉ điểm danh buổi đã tới giờ bắt đầu.</p>
+    </div>
+
+    <div class="card">
+      <h2>Sửa điểm danh đã lưu</h2>
+      <p class="small muted">Thời hạn sửa mặc định 48 giờ kể từ giờ kết thúc buổi. Sau thời hạn, chỉ quản lý hoặc chủ trung tâm sửa được và phải ghi lý do. Mọi lần sửa lưu người sửa, giá trị cũ, giá trị mới, thời điểm.</p>
+      <div class="form-grid">
+        <div class="field"><label for="e-hv">Học viên</label><select id="e-hv"><option>Hồ Tuấn Kiệt</option></select></div>
+        <div class="field"><label for="e-tu">Giá trị cũ</label><select id="e-tu"><option>Vắng không phép</option></select></div>
+        <div class="field"><label for="e-sang">Giá trị mới</label><select id="e-sang"><option>Vắng có phép</option><option>Có mặt</option><option>Đi muộn</option></select></div>
+        <div class="field"><label for="e-gio">Số giờ kể từ khi buổi kết thúc</label><input id="e-gio" type="number" min="0" value="20"><span class="hint">Thử 20 (được chấp nhận) và 60 (bị từ chối nếu bạn là giáo viên).</span></div>
+        <div class="field" style="grid-column:1/-1"><label for="e-ld">Lý do (bắt buộc khi quá 48 giờ)</label><input id="e-ld" placeholder="Ví dụ: phụ huynh Hồ Thị Lan báo ốm có giấy"></div>
+      </div>
+      <div class="form-actions"><button class="btn" type="button" id="btn-edit" data-act="sua">Sửa điểm danh</button></div>
+      <div id="edit-msg" class="alert info" hidden></div>
+      <h3 style="margin-top:14px">Lịch sử sửa điểm danh</h3>
+      <div class="table-wrap"><table class="data" id="tbl-his">
+        <thead><tr><th>Thời điểm</th><th>Học viên</th><th>Giá trị cũ</th><th>Giá trị mới</th><th>Người sửa</th><th>Lý do</th></tr></thead>
+        <tbody><tr><td class="mono">2026-10-29 10:05</td><td>Võ Ngọc Anh</td><td>Vắng không phép</td><td>Vắng có phép</td><td>Đỗ Minh Quân (Giáo viên)</td><td>Có giấy xin phép nộp muộn</td></tr></tbody>
+      </table></div>
+      <div class="toolbar" style="margin-top:12px"><a class="btn accent" href="scr-m03-02.html">Xem học bù và chuyên cần</a>
+      <a class="btn accent" href="scr-m04-02.html">Bước tiếp theo: công nợ học phí của lớp</a></div>
+    </div>
+<script>
+(function () {
+  var rows = document.querySelectorAll('#tbl-att select.att');
+  var ST = ["Có mặt","Vắng có phép","Vắng không phép","Đi muộn","Học bù"];
+  function sum() {
+    var c = {}; ST.forEach(function (s) { c[s] = 0; });
+    Array.prototype.forEach.call(rows, function (r) { c[r.value]++; });
+    document.getElementById('sum').textContent = ST.map(function (s) { return s + ': ' + c[s]; }).join(' | ') + ' | Tổng: ' + rows.length;
+    return c;
+  }
+  Array.prototype.forEach.call(rows, function (r) { r.addEventListener('change', sum); });
+  document.getElementById('btn-all').addEventListener('click', function () {
+    Array.prototype.forEach.call(rows, function (r) { r.value = 'Có mặt'; }); sum();
+    U.setMsg('att-msg', 'info', 'Đã đánh dấu có mặt cả lớp. Chỉnh lại các trường hợp khác rồi lưu.');
+  });
+  document.getElementById('btn-save').addEventListener('click', function () {
+    var c = sum();
+    U.setMsg('att-msg', 'ok', 'Đã lưu điểm danh buổi 7 của lớp N5-K01 (minh họa): ' + c['Có mặt'] + ' có mặt, ' + c['Vắng có phép'] + ' vắng có phép, ' + c['Vắng không phép'] + ' vắng không phép, ' + c['Đi muộn'] + ' đi muộn, ' + c['Học bù'] + ' học bù. Học viên vắng có phép được đưa vào danh sách cần học bù.');
+  });
+  document.getElementById('btn-edit').addEventListener('click', function () {
+    var h = parseInt(document.getElementById('e-gio').value, 10); if (isNaN(h)) h = 0;
+    var ld = document.getElementById('e-ld').value.replace(/^\s+|\s+$/g, '');
+    var role = U.role(), admin = (role === 'quan_ly' || role === 'chu_trung_tam');
+    if (h > 48 && !admin) { U.setMsg('edit-msg', 'bad', 'Từ chối: đã quá 48 giờ (' + h + ' giờ). Chỉ quản lý hoặc chủ trung tâm sửa được, kèm lý do.'); return; }
+    if (h > 48 && !ld) { U.setMsg('edit-msg', 'bad', 'Từ chối: sửa sau 48 giờ phải ghi lý do.'); return; }
+    var tb = document.querySelector('#tbl-his tbody'), tr = document.createElement('tr');
+    [ '2026-11-04 09:00', document.getElementById('e-hv').value, document.getElementById('e-tu').value, document.getElementById('e-sang').value, (admin ? 'Đinh Văn Lộc (Quản lý)' : 'Đỗ Minh Quân (Giáo viên)'), ld || '(không ghi)' ].forEach(function (t) { var td = document.createElement('td'); td.textContent = t; tr.appendChild(td); });
+    tb.appendChild(tr);
+    U.setMsg('edit-msg', 'ok', 'Đã sửa sau ' + h + ' giờ, lưu giá trị cũ, giá trị mới và người sửa; chuyên cần được tính lại (minh họa).');
+  });
+  sum();
+})();
+</script>
+
+  </div>
+</main>
+</div>
+<script src="../assets/ux-v2.js"></script>
+<script src="../assets/zenith.js"></script>
+</body>
+</html>

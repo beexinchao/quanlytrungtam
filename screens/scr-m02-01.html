@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCR-M02-01 - Khóa học và lớp</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/ux-v2.css">
+<link rel="stylesheet" href="../assets/zenith.css">
+<link rel="stylesheet" href="../assets/zenith-today.css">
+<script src="../assets/permissions.js"></script>
+<script src="../assets/app.js"></script>
+</head>
+<body data-root=".." data-module="M02" data-scr="SCR-M02-01">
+<div class="demo-banner" role="note"><strong>Dữ liệu minh họa</strong>: tên, số điện thoại, email và số tiền trên màn hình này là dữ liệu giả, không phải thông tin thật.</div>
+<header class="topbar">
+  <a class="brand" href="../index.html">Quản lý lớp học<small>Trung tâm tiếng Nhật - bản mockup</small></a>
+  <span class="spacer"></span>
+  <div id="role-bar"></div>
+  <a class="btn-home" href="../index.html">Về trang chọn vai trò</a>
+</header>
+<div class="app">
+<nav class="sidenav" id="module-nav" aria-label="Module"></nav>
+<main class="main">
+  <div class="page-head">
+    <h1>Khóa học và lớp</h1>
+    <p class="muted" style="margin-bottom:0">M02: Quản lý lớp học, khóa học, thời khóa biểu. Thiết lập khóa theo cấp độ JLPT, mở lớp, xếp học viên vào lớp và chuyển lớp.</p>
+    <div class="meta" aria-label="Mã liên quan">
+      <span class="tag code">SCR-M02-01</span>
+      <span class="tag">US-M02-01</span>
+      <span class="tag">US-M02-02</span>
+      <span class="tag">UC-M02-01</span>
+      <span class="tag">UC-M02-02</span>
+      <span class="tag">FR-M02-01</span>
+      <span class="tag">FR-M02-02</span>
+      <span class="tag">FR-M02-03</span>
+    </div>
+    <div id="perm-info" class="perm-bar"></div>
+  </div>
+  <div id="denied" class="denied-panel"></div>
+  <div class="screen-content">
+
+    <div class="card">
+      <div class="toolbar"><h2 style="margin:0;flex:1">Khóa học theo cấp độ JLPT</h2>
+        <button class="btn" type="button" data-act="tao" data-toast="Đã mở biểu mẫu khóa học (minh họa)">Tạo khóa học</button></div>
+      <div class="table-wrap"><table class="data">
+        <thead><tr><th>Khóa</th><th>Cấp độ</th><th>Giáo trình</th><th class="num">Số buổi</th><th class="num">Học phí gốc (đồng)</th><th>Trạng thái</th></tr></thead>
+        <tbody>
+          <tr><td>Sơ cấp N5 <span class="jp muted">(初級 N5)</span></td><td>N5</td><td>Minna no Nihongo <span class="jp muted">(みんなの日本語)</span></td><td class="num">48</td><td class="num">7.200.000</td><td><span class="badge ok">Đang mở</span></td></tr>
+          <tr><td>N5 ngắn hạn <span class="jp muted">(初級 N5)</span></td><td>N5</td><td>Minna no Nihongo <span class="jp muted">(みんなの日本語)</span></td><td class="num">24</td><td class="num">6.000.000</td><td><span class="badge ok">Đang mở</span></td></tr>
+          <tr><td>Sơ cấp N4 <span class="jp muted">(初級 N4)</span></td><td>N4</td><td>Minna no Nihongo <span class="jp muted">(みんなの日本語)</span></td><td class="num">48</td><td class="num">7.800.000</td><td><span class="badge ok">Đang mở</span></td></tr>
+          <tr><td>Trung cấp N3 <span class="jp muted">(中級 N3)</span></td><td>N3</td><td>Giáo trình trung cấp của trung tâm</td><td class="num">60</td><td class="num">9.600.000</td><td><span class="badge ok">Đang mở</span></td></tr>
+          <tr><td>Luyện thi N2 <span class="jp muted">(上級 N2)</span></td><td>N2</td><td>Giáo trình luyện thi của trung tâm</td><td class="num">60</td><td class="num">10.800.000</td><td><span class="badge muted">Ngừng mở</span></td></tr>
+        </tbody>
+      </table></div>
+      <p class="small muted">Khóa đã có lớp không xóa được, chỉ chuyển sang Ngừng mở.</p>
+    </div>
+
+    <div class="grid c2">
+      <div class="card">
+        <h2>Mở lớp từ khóa</h2>
+        <form data-demo="Đã mở lớp (minh họa)">
+          <div class="form-grid">
+            <div class="field"><label for="l-ten">Tên lớp</label><input id="l-ten" value="N5-K01"></div>
+            <div class="field"><label for="l-khoa">Khóa</label><select id="l-khoa"><option>Sơ cấp N5</option><option>Sơ cấp N4</option><option>Trung cấp N3</option></select></div>
+            <div class="field"><label for="l-kg">Ngày khai giảng</label><input id="l-kg" type="date" value="2026-09-08"></div>
+            <div class="field"><label for="l-ss">Sĩ số tối đa</label><input id="l-ss" type="number" value="20" min="1"></div>
+            <div class="field"><label for="l-gv">Giáo viên</label><select id="l-gv"><option>Đỗ Minh Quân</option><option>Tanaka Yuki</option><option>Sato Haruka</option><option>Phạm Thị Hương</option></select></div>
+            <div class="field"><label for="l-tg">Trợ giảng</label><select id="l-tg"><option>Vũ Thùy Dương</option><option>Ngô Anh Tuấn</option><option>(không có)</option></select></div>
+          </div>
+          <button class="btn" type="submit" data-act="tao">Mở lớp</button>
+        </form>
+      </div>
+      <div class="card">
+        <h2>Danh sách lớp</h2>
+        <div class="table-wrap"><table class="data" id="tbl-lop">
+          <thead><tr><th>Lớp</th><th>Giáo viên</th><th class="num">Sĩ số</th><th>Tình trạng</th></tr></thead>
+          <tbody>
+            <tr><td>N5-K01</td><td>Đỗ Minh Quân</td><td class="num">20 / 20</td><td><span class="badge bad">Đủ sĩ số</span></td></tr>
+            <tr><td>N5-K02</td><td>Phạm Thị Hương</td><td class="num">12 / 20</td><td><span class="badge ok">Còn chỗ</span></td></tr>
+            <tr><td>N4-K01</td><td>Tanaka Yuki</td><td class="num">15 / 20</td><td><span class="badge ok">Còn chỗ</span></td></tr>
+            <tr><td>N3-K01</td><td>Sato Haruka</td><td class="num">9 / 18</td><td><span class="badge ok">Còn chỗ</span></td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Xếp học viên vào lớp và chuyển lớp</h2>
+      <div class="alert warn" role="alert"><strong>Vượt sĩ số.</strong> Lớp N5-K01 đã có 20 / 20 học viên; thêm học viên thứ 21 cần người có quyền duyệt kèm lý do.</div>
+      <form data-demo="Đã ghi nhận xếp lớp (minh họa)">
+        <div class="form-grid">
+          <div class="field"><label for="x-hv">Học viên</label><select id="x-hv"><option>Nguyễn Hoàng Nam (14 tuổi, đã có phụ huynh)</option><option>Lý Bảo Châu (12 tuổi, đã có phụ huynh)</option><option>Trần Minh Khang</option></select></div>
+          <div class="field"><label for="x-lop">Lớp</label><select id="x-lop"><option>N5-K01 (đủ sĩ số)</option><option>N5-K02</option></select></div>
+          <div class="field" style="grid-column:1/-1"><label for="x-ld">Lý do duyệt vượt sĩ số</label><input id="x-ld" value="Học viên thứ 21 đã đóng cọc, trung tâm còn chỗ ngồi"></div>
+        </div>
+        <div class="form-actions">
+          <button class="btn" type="submit" data-act="tao">Xếp vào lớp</button>
+          <button class="btn secondary" type="button" data-act="duyet" data-toast="Đã duyệt vượt sĩ số kèm lý do (minh họa)">Duyệt vượt sĩ số</button>
+          <button class="btn secondary" type="button" data-act="sua" data-toast="Đã chuyển lớp, lịch sử được lưu (minh họa)">Chuyển lớp</button>
+          <a class="btn accent" href="scr-m03-01.html">Bước tiếp theo: điểm danh lớp</a>
+        </div>
+      </form>
+      <p class="small muted" style="margin-top:10px">Không xếp một học viên vào hai lớp trùng khung giờ; học viên dưới 18 tuổi cần có phụ huynh liên kết.</p>
+    </div>
+
+  </div>
+</main>
+</div>
+<script src="../assets/ux-v2.js"></script>
+<script src="../assets/zenith.js"></script>
+</body>
+</html>

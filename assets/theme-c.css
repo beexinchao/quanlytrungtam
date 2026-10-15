@@ -1,0 +1,47 @@
+/* Phương án C: Ấm, tối giản, gợi chất Nhật (giấy washi, đỏ shu, chàm). Xếp sau style.css. */
+:root{--ink:#26231f;--ink-soft:#6b645a;--line:#e3dccf;--bg:#f7f3ea;--surface:#fffdf8;--primary:#2b3a67;--primary-soft:#e7eaf3;--accent:#c4372c;--accent-soft:#f9e4e0;--ok:#3d6b3a;--ok-soft:#e5efdf;--warn:#8a5a00;--warn-soft:#faedc9;--bad:#a1271a;--bad-soft:#f8dfda;--info:#2b3a67;--info-soft:#e7eaf3;--radius:4px;--font:"Noto Sans JP","Yu Gothic UI","Segoe UI",system-ui,sans-serif}
+body{background:var(--bg)}
+h1,h2{font-family:"Noto Serif JP","Yu Mincho","Hiragino Mincho ProN",Georgia,serif;font-weight:700;letter-spacing:.01em}
+h1{font-size:1.6rem}
+.demo-banner{background:var(--surface);border-bottom:1px dashed #cdbf9f;color:var(--ink-soft);font-size:13px;padding:5px 16px}
+.topbar{background:var(--surface);color:var(--ink);border-bottom:3px solid var(--accent);padding:12px 24px}
+.brand{color:var(--ink);font-family:"Yu Mincho","Noto Serif JP",Georgia,serif;font-size:1.2rem;display:inline-flex;align-items:center;gap:10px}
+.brand::before{content:"学";display:inline-grid;place-items:center;width:30px;height:30px;background:var(--accent);color:#fff;font-size:17px;border-radius:3px}
+.brand small{color:var(--ink-soft)}
+.topbar a.btn-home{color:var(--primary);border:1px solid var(--primary);border-radius:3px;background:transparent}
+.topbar a.btn-home:hover{background:var(--primary-soft);color:var(--primary)}
+.topbar select,.role-select{border-radius:3px;border-color:#cdbf9f}
+.sidenav{background:var(--surface);border-right:1px solid var(--line)}
+.sidenav h2{color:var(--accent);font-family:inherit}
+.sidenav li>a,.sidenav li>span.mod{border-radius:3px;border-left:3px solid transparent}
+.sidenav li>a:hover{background:#f3ede0}
+.sidenav li.current>a,.sidenav li.current>span.mod{background:#f3ede0;border-left-color:var(--accent);color:var(--ink);font-weight:700}
+.main{padding:24px 30px 44px}
+.page-head{border-bottom:1px solid var(--line);padding-bottom:14px}
+.tag{background:#efe8d8;color:#5a5245;border-radius:3px}
+.tag.code{background:var(--accent);}
+.card,.stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:none}
+.stat{border-top:3px solid var(--accent)}
+.stat .v{font-family:"Yu Mincho","Noto Serif JP",Georgia,serif;color:var(--primary)}
+table.data th{background:#f3ede0;color:#5a5245;border-bottom:1px solid #cdbf9f}
+table.data td{border-bottom:1px solid #eee7d8}
+table.data tbody tr:hover{background:#faf5ea}
+table.data tr.is-selected{background:#f3ede0}
+.badge{border-radius:3px}
+.btn{border-radius:3px;background:var(--primary);border-color:var(--primary)}
+.btn:hover{background:#1f2b4f}
+.btn.secondary{color:var(--primary);background:transparent}
+.btn.accent{background:var(--accent);border-color:var(--accent)}
+.btn.accent:hover{background:#9f2a21}
+.toolbar input,.toolbar select,.field input,.field select,.field textarea{border:1px solid #cdbf9f!important;border-radius:3px!important;background:#fffefa}
+.tabs{border-bottom:1px solid var(--line)}
+.tabs button[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent)}
+.alert{border-radius:3px}
+.hero{background:var(--surface);border-left:6px solid var(--accent);border-radius:3px}
+.role-btn{background:var(--surface);border:1px solid var(--line);border-radius:3px}
+.role-btn:hover{border-color:var(--accent)}
+.role-btn[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft);box-shadow:none}
+.mod-card{background:var(--surface);border-radius:3px;border:1px solid var(--line)}
+a.mod-card:hover{border-color:var(--accent);box-shadow:none}
+.mod-card .code{background:var(--accent);border-radius:2px}
+.cal .ev{background:var(--primary-soft);border-left-color:var(--primary)}

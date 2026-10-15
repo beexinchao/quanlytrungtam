@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mockup hệ thống quản lý lớp học - Chọn vai trò</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/ux-v2.css">
+<link rel="stylesheet" href="assets/zenith.css">
+<link rel="stylesheet" href="assets/zenith-today.css">
+<script src="assets/permissions.js"></script>
+<script src="assets/app.js"></script>
+</head>
+<body data-root=".">
+<div class="demo-banner" role="note"><strong>Dữ liệu minh họa</strong>: tên, số điện thoại, email và số tiền trong bản mockup đều là dữ liệu giả, không phải thông tin thật.</div>
+<header class="topbar">
+  <span class="brand">Quản lý lớp học<small>Trung tâm tiếng Nhật - bản mockup</small></span>
+  <span class="spacer"></span>
+</header>
+<main class="main" style="max-width: 1100px; margin: 0 auto;">
+  <section class="hero">
+    <h1>Chọn vai trò để xem giao diện</h1>
+    <p class="muted">Mockup gồm 10 module. Danh sách module và nút thao tác thay đổi theo ma trận phân quyền 7 vai trò x 10 module (tài liệu 08_Yeu_cau_phi_chuc_nang). Module không có quyền xem bị làm mờ và không bấm được.</p>
+    <fieldset id="role-grid-box" style="margin:10px 0 0;padding:0;border:0;">
+      <legend>Vai trò</legend>
+      <div class="role-grid" id="role-grid"></div>
+    </fieldset>
+    <p class="small muted" id="role-hint" aria-live="polite" style="margin-top:10px;"></p>
+  </section>
+
+  <section aria-labelledby="mod-h">
+    <h2 id="mod-h">Module</h2>
+    <ul class="mod-grid" id="module-list"></ul>
+    <p class="small muted" style="margin-top:12px;">Ký hiệu quyền trên mỗi thẻ theo thứ tự Xem, Tạo, Sửa, Xóa, Duyệt. Màu xanh là Đủ, vàng là Giới hạn (theo lớp được phân công hoặc dữ liệu của chính mình), xám là Không.</p>
+  </section>
+</main>
+<script src="assets/ux-v2.js"></script>
+<script src="assets/zenith.js"></script>
+</body>
+</html>

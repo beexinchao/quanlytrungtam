@@ -1,0 +1,50 @@
+/* Giao diện cổng học viên và phụ huynh (khung điện thoại 390 px). Chữ >= 14 px, vùng bấm >= 44 px, không cuộn ngang. Không dùng tài nguyên ngoài. */
+body.portal .sidenav { display: none; }
+body.portal .app { display: block; min-height: 0; }
+body.portal { overflow-x: hidden; }
+body.portal .main { max-width: 430px; margin: 0 auto; padding: 12px; }
+body.portal .topbar { padding: 8px 12px; gap: 6px 10px; }
+body.portal .brand { font-size: 16px; display: block; }
+body.portal .brand small { display: block; margin-left: 0; font-size: 14px; }
+body.portal .topbar .spacer { display: none; }
+body.portal .topbar select, body.portal .role-select { min-height: 44px; max-width: 100%; font-size: 16px; }
+body.portal .topbar a.btn-home { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; }
+body.portal .topbar label { font-size: 14px; }
+body.portal h1 { font-size: 20px; overflow-wrap: anywhere; }
+body.portal .tag, body.portal .tag.code, body.portal .badge, body.portal .perm, body.portal .perm-bar { font-size: 14px; }
+body.portal .page-head p { overflow-wrap: anywhere; }
+body.portal .demo-banner { font-size: 14px; padding: 6px 12px; }
+body.portal .card { padding: 12px; overflow-wrap: anywhere; }
+body.portal .btn, body.portal button { min-height: 44px; font-size: 16px; }
+body.portal .btn { padding: 8px 14px; }
+body.portal .field input, body.portal .field select, body.portal .field textarea { min-height: 44px; font-size: 16px; width: 100%; }
+body.portal .form-grid { grid-template-columns: 1fr; }
+body.portal .small, body.portal .hint { font-size: 14px; }
+body.portal .alert { font-size: 14px; }
+body.portal .toolbar { gap: 8px; }
+#toast { font-size: 14px; }
+
+.p-nav { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; padding: 0; list-style: none; }
+.p-nav li { flex: 1 1 30%; display: flex; }
+.p-nav a { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 44px; padding: 4px 6px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--ink); text-decoration: none; font-size: 14px; }
+.p-nav a[aria-current="page"] { background: var(--primary); color: #fff; border-color: var(--primary); font-weight: 600; }
+
+.childbar { background: var(--primary-soft); border: 1px solid #b4d3d7; border-radius: 8px; padding: 10px; margin-bottom: 12px; }
+.childbar .who { font-size: 14px; margin-bottom: 6px; }
+.seg { display: flex; flex-wrap: wrap; gap: 8px; }
+.seg button { flex: 1 1 140px; min-height: 44px; font: inherit; font-size: 16px; padding: 6px 10px; border: 2px solid var(--primary); border-radius: 8px; background: #fff; color: var(--primary); cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--primary); color: #fff; font-weight: 600; }
+
+.row-item { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; margin-bottom: 8px; background: #fff; }
+.row-item .t { font-weight: 600; }
+.row-item .s { font-size: 14px; color: var(--ink-soft); }
+.row-item .r { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; justify-content: space-between; }
+.row-item.unread { border-left: 5px solid var(--accent); background: #fffaf8; }
+.row-item button.open { display: block; width: 100%; text-align: left; background: none; border: 0; padding: 0; min-height: 44px; font: inherit; font-size: 16px; cursor: pointer; color: inherit; }
+.qr-box { text-align: center; margin: 10px 0; }
+.qr-box svg { width: 100%; max-width: 220px; height: auto; border: 1px solid var(--line); }
+.p-stat { display: flex; gap: 8px; margin-bottom: 10px; }
+.p-stat > div { flex: 1; background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; }
+.p-stat .v { font-size: 20px; font-weight: 700; }
+.p-stat .l { font-size: 14px; color: var(--ink-soft); }
+body.portal .tabs button { min-height: 44px; font-size: 16px; flex: 1; }

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCR-M08-03 - Cổng: học phí và mã QR</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/portal.css">
+<link rel="stylesheet" href="../assets/ux-v2.css">
+<link rel="stylesheet" href="../assets/zenith.css">
+<link rel="stylesheet" href="../assets/zenith-today.css">
+<script src="../assets/util.js"></script>
+<script src="../assets/portal.js"></script>
+<script src="../assets/permissions.js"></script>
+<script src="../assets/app.js"></script>
+</head>
+<body data-root=".." data-module="M08" data-scr="SCR-M08-03" class="portal">
+<div class="demo-banner" role="note"><strong>Dữ liệu minh họa</strong>: tên, số điện thoại, email và số tiền trên màn hình này là dữ liệu giả, không phải thông tin thật.</div>
+<header class="topbar">
+  <a class="brand" href="../index.html">Quản lý lớp học<small>Trung tâm tiếng Nhật - bản mockup</small></a>
+  <span class="spacer"></span>
+  <div id="role-bar"></div>
+  <a class="btn-home" href="../index.html">Về trang chọn vai trò</a>
+</header>
+<div class="app">
+<nav class="sidenav" id="module-nav" aria-label="Module"></nav>
+<main class="main">
+  <div class="page-head">
+    <h1>Cổng: học phí và mã QR</h1>
+    <p class="muted" style="margin-bottom:0">M08: Cổng học viên và phụ huynh trên điện thoại. Xem học phí còn nợ và mã QR thanh toán.</p>
+    <div class="meta" aria-label="Mã liên quan">
+      <span class="tag code">SCR-M08-03</span>
+      <span class="tag">US-M08-04</span>
+      <span class="tag">UC-M08-04</span>
+      <span class="tag">FR-M08-04</span>
+    </div>
+    <div id="perm-info" class="perm-bar"></div>
+  </div>
+  <div id="denied" class="denied-panel"></div>
+  <div class="screen-content">
+
+    <div id="portal" aria-live="polite"></div>
+    <p class="small muted">Ví dụ: phụ huynh Hồ Thị Lan thấy đợt 2 của Hồ Tuấn Kiệt còn nợ 2.000.000 đồng, hạn ngày 05 tháng 11, kèm mã QR minh họa; chọn Lý Bảo Châu thì thấy khoản còn nợ 1.000.000 đồng của em.</p>
+    <script>Portal.start('m08-03');</script>
+
+  </div>
+</main>
+</div>
+<script src="../assets/ux-v2.js"></script>
+<script src="../assets/zenith.js"></script>
+</body>
+</html>

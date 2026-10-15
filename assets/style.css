@@ -1,0 +1,215 @@
+/* Khung giao diện dùng chung cho mockup. Không dùng tài nguyên ngoài. */
+:root {
+  --ink: #1d2733;
+  --ink-soft: #52606f;
+  --line: #d9dde3;
+  --bg: #f3f4f0;
+  --surface: #ffffff;
+  --primary: #0e5a63;
+  --primary-ink: #ffffff;
+  --primary-soft: #dcecee;
+  --accent: #b83a26;
+  --accent-soft: #f8e1dc;
+  --ok: #1f6b3a;
+  --ok-soft: #dff1e4;
+  --warn: #8a5a00;
+  --warn-soft: #fff1cc;
+  --bad: #a1271a;
+  --bad-soft: #fbe3df;
+  --info: #1f4f8f;
+  --info-soft: #e0ebf8;
+  --radius: 8px;
+  --font: "Segoe UI", "Yu Gothic UI", "Meiryo", "Noto Sans JP", "Noto Sans", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--bg);
+}
+a { color: var(--primary); }
+a:hover { color: var(--accent); }
+:focus-visible { outline: 3px solid #f0a500; outline-offset: 2px; }
+h1, h2, h3 { line-height: 1.25; margin: 0 0 .5rem; }
+h1 { font-size: 1.5rem; }
+h2 { font-size: 1.15rem; }
+h3 { font-size: 1rem; }
+p { margin: 0 0 .75rem; }
+.muted { color: var(--ink-soft); }
+.small { font-size: 14px; }
+.mono { font-variant-numeric: tabular-nums; }
+.jp { font-family: "Yu Gothic UI", "Meiryo", "Noto Sans JP", var(--font); }
+.right { text-align: right; }
+.nowrap { white-space: nowrap; }
+
+/* Dải dữ liệu minh họa */
+.demo-banner {
+  background: var(--warn-soft);
+  color: var(--warn);
+  border-bottom: 2px solid #e5b84a;
+  padding: 6px 16px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Khung chính */
+.topbar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px;
+  background: var(--primary); color: var(--primary-ink);
+  padding: 10px 20px;
+}
+.brand { font-weight: 700; letter-spacing: .01em; font-size: 1.05rem; color: #fff; text-decoration: none; }
+.brand small { font-weight: 400; opacity: .85; margin-left: 8px; }
+.topbar .spacer { flex: 1 1 auto; }
+.topbar label { font-size: 14px; margin-right: 6px; }
+.topbar select, .role-select {
+  font: inherit; padding: 6px 10px; border-radius: 6px; border: 1px solid #fff;
+  background: #fff; color: var(--ink); min-height: 36px;
+}
+.topbar a.btn-home { color: #fff; border: 1px solid rgba(255,255,255,.7); padding: 6px 12px; border-radius: 6px; text-decoration: none; font-size: 14px; }
+.topbar a.btn-home:hover { background: rgba(255,255,255,.15); color: #fff; }
+
+.app { display: grid; grid-template-columns: 250px minmax(0, 1fr); min-height: calc(100vh - 100px); }
+.sidenav { background: var(--surface); border-right: 1px solid var(--line); padding: 14px 10px; }
+.sidenav h2 { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); padding: 0 8px; }
+.sidenav ul { list-style: none; margin: 0 0 12px; padding: 0; }
+.sidenav li > a, .sidenav li > span.mod {
+  display: block; padding: 7px 10px; border-radius: 6px; text-decoration: none; color: var(--ink); font-size: 14px;
+}
+.sidenav li > a:hover { background: var(--primary-soft); }
+.sidenav li.current > a, .sidenav li.current > span.mod { background: var(--primary-soft); font-weight: 600; }
+.sidenav li.disabled > span.mod { color: #8b95a1; cursor: not-allowed; }
+.sidenav ul ul { margin: 2px 0 6px 12px; border-left: 2px solid var(--line); }
+.sidenav ul ul a { font-size: 14px; padding: 5px 10px; }
+.sidenav ul ul li.current > a { background: var(--accent-soft); color: var(--accent); }
+.main { padding: 20px 24px 40px; min-width: 0; }
+
+.page-head { margin-bottom: 16px; }
+.page-head .meta { display: flex; flex-wrap: wrap; gap: 6px 8px; margin-top: 6px; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 14px; background: #e9ecef; color: #3a4654; }
+.tag.code { background: var(--ink); color: #fff; font-family: Consolas, "Courier New", monospace; font-size: 13px; }
+.perm-bar { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 10px 0 0; font-size: 14px; }
+.perm { padding: 2px 8px; border-radius: 6px; font-size: 14px; border: 1px solid var(--line); background: #fff; }
+.perm.day_du { background: var(--ok-soft); color: var(--ok); border-color: #b9dcc4; }
+.perm.gioi_han { background: var(--warn-soft); color: var(--warn); border-color: #ecd28a; }
+.perm.khong { background: #eef0f2; color: #6b7682; }
+
+.denied-panel { display: none; }
+body.denied .denied-panel { display: block; }
+body.denied .screen-content { display: none; }
+
+/* Thẻ, lưới */
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; margin-bottom: 16px; }
+.card > h2:first-child, .card > h3:first-child { margin-top: 0; }
+.grid { display: grid; gap: 16px; }
+.grid.c2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid.c3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid.c4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.stat { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; }
+.stat .v { font-size: 1.6rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.stat .l { font-size: 14px; color: var(--ink-soft); }
+
+/* Bảng */
+.table-wrap { overflow-x: auto; }
+table.data { width: 100%; border-collapse: collapse; font-size: 14px; }
+table.data th, table.data td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+table.data th { background: #eef1f3; font-weight: 600; white-space: nowrap; position: sticky; top: 0; }
+table.data tbody tr:hover { background: #f8fafb; }
+table.data td.num, table.data th.num { text-align: right; font-variant-numeric: tabular-nums; }
+table.data tr.is-selected { background: var(--primary-soft); }
+
+/* Huy hiệu */
+.badge { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 13px; font-weight: 600; white-space: nowrap; }
+.badge.ok { background: var(--ok-soft); color: var(--ok); }
+.badge.warn { background: var(--warn-soft); color: var(--warn); }
+.badge.bad { background: var(--bad-soft); color: var(--bad); }
+.badge.info { background: var(--info-soft); color: var(--info); }
+.badge.muted { background: #e9ecef; color: #4a5562; }
+
+/* Nút và biểu mẫu */
+.btn {
+  font: inherit; font-size: 14px; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  min-height: 36px; padding: 6px 14px; border-radius: 6px; border: 1px solid var(--primary);
+  background: var(--primary); color: var(--primary-ink); cursor: pointer; text-decoration: none;
+}
+.btn:hover { background: #0a444b; color: #fff; }
+.btn.secondary { background: #fff; color: var(--primary); }
+.btn.secondary:hover { background: var(--primary-soft); color: var(--primary); }
+.btn.danger { background: #fff; color: var(--bad); border-color: var(--bad); }
+.btn.danger:hover { background: var(--bad-soft); color: var(--bad); }
+.btn.accent { background: var(--accent); border-color: var(--accent); }
+.btn.accent:hover { background: #962d1c; color: #fff; }
+.btn:disabled, .btn[aria-disabled="true"] { opacity: .45; cursor: not-allowed; }
+.btn.is-limited { border-style: dashed; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
+.toolbar .grow { flex: 1 1 200px; }
+.field { display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; }
+.field label { font-size: 14px; font-weight: 600; }
+.field input, .field select, .field textarea {
+  font: inherit; font-size: 14px; padding: 7px 10px; border: 1px solid #b7bec7; border-radius: 6px; background: #fff; color: var(--ink); min-height: 36px;
+}
+.field .hint { font-size: 13px; color: var(--ink-soft); }
+.form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 16px; }
+.form-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+
+/* Cảnh báo */
+.alert { border-radius: var(--radius); padding: 10px 14px; margin-bottom: 12px; font-size: 14px; border: 1px solid; }
+.alert.warn { background: var(--warn-soft); border-color: #ecd28a; color: var(--warn); }
+.alert.bad { background: var(--bad-soft); border-color: #eeb3ab; color: var(--bad); }
+.alert.info { background: var(--info-soft); border-color: #b7cdea; color: var(--info); }
+.alert.ok { background: var(--ok-soft); border-color: #b9dcc4; color: var(--ok); }
+
+/* Tab */
+.tabs { display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 2px solid var(--line); margin-bottom: 14px; }
+.tabs button { font: inherit; font-size: 14px; background: none; border: 0; padding: 8px 14px; cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; color: var(--ink-soft); }
+.tabs button[aria-selected="true"] { color: var(--primary); border-bottom-color: var(--primary); font-weight: 600; }
+.tab-panel[hidden] { display: none; }
+
+/* Lưới lịch tuần */
+.cal { display: grid; grid-template-columns: 70px repeat(6, minmax(110px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; font-size: 13px; min-width: 760px; }
+.cal > div { background: #fff; padding: 6px 8px; min-height: 46px; }
+.cal .h { background: #eef1f3; font-weight: 600; text-align: center; min-height: 0; }
+.cal .t { background: #f8fafb; color: var(--ink-soft); text-align: right; }
+.cal .ev { background: var(--primary-soft); border-left: 4px solid var(--primary); border-radius: 4px; font-size: 13px; padding: 4px 6px; }
+.cal .ev.off { background: #eef0f2; border-left-color: #8b95a1; text-decoration: line-through; color: #6b7682; }
+.cal .ev.make { background: var(--warn-soft); border-left-color: #d49a1c; }
+.cal .ev.clash { background: var(--bad-soft); border-left-color: var(--bad); }
+
+/* Thông báo nhỏ */
+#toast { position: fixed; right: 16px; bottom: 16px; background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 8px; font-size: 14px; max-width: 360px; opacity: 0; transform: translateY(8px); transition: opacity .2s, transform .2s; pointer-events: none; z-index: 50; }
+#toast.show { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { #toast { transition: none; } }
+
+/* Trang chọn vai trò */
+.hero { background: var(--surface); border: 1px solid var(--line); border-left: 6px solid var(--accent); border-radius: var(--radius); padding: 18px 20px; margin-bottom: 18px; }
+.role-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; margin: 10px 0 0; padding: 0; border: 0; }
+.role-grid legend { font-weight: 600; margin-bottom: 6px; padding: 0; }
+.role-btn { font: inherit; text-align: left; padding: 10px 14px; border: 2px solid var(--line); border-radius: var(--radius); background: #fff; cursor: pointer; min-height: 56px; }
+.role-btn:hover { border-color: var(--primary); }
+.role-btn[aria-pressed="true"] { border-color: var(--primary); background: var(--primary-soft); box-shadow: inset 0 0 0 1px var(--primary); }
+.role-btn .n { display: block; font-weight: 600; }
+.role-btn .d { display: block; font-size: 13px; color: var(--ink-soft); }
+.mod-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; list-style: none; padding: 0; margin: 0; }
+.mod-card { display: block; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; text-decoration: none; color: var(--ink); height: 100%; }
+a.mod-card:hover { border-color: var(--primary); box-shadow: 0 2px 8px rgba(14,90,99,.15); }
+.mod-card .code { font-family: Consolas, "Courier New", monospace; font-size: 13px; color: #fff; background: var(--primary); padding: 1px 7px; border-radius: 4px; }
+.mod-card .t { display: block; font-weight: 600; margin: 6px 0 4px; }
+.mod-card .s { display: block; font-size: 13px; color: var(--ink-soft); }
+.mod-card.is-disabled { background: #eef0f2; color: #7a8591; cursor: not-allowed; border-style: dashed; }
+.mod-card.is-disabled .code { background: #8b95a1; }
+.mod-card .perm-row { display: flex; gap: 4px; margin-top: 8px; flex-wrap: wrap; }
+.mod-card .perm { font-size: 13px; padding: 1px 6px; }
+
+@media (max-width: 960px) {
+  .app { grid-template-columns: 1fr; }
+  .sidenav { border-right: 0; border-bottom: 1px solid var(--line); }
+  .grid.c3, .grid.c4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .grid.c2, .grid.c3, .grid.c4, .form-grid { grid-template-columns: 1fr; }
+  .main { padding: 14px 12px 32px; }
+}

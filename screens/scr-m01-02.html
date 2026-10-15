@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCR-M01-02 - Hồ sơ giáo viên, trợ giảng và tài khoản</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/ux-v2.css">
+<link rel="stylesheet" href="../assets/zenith.css">
+<link rel="stylesheet" href="../assets/zenith-today.css">
+<script src="../assets/permissions.js"></script>
+<script src="../assets/app.js"></script>
+</head>
+<body data-root=".." data-module="M01" data-scr="SCR-M01-02">
+<div class="demo-banner" role="note"><strong>Dữ liệu minh họa</strong>: tên, số điện thoại, email và số tiền trên màn hình này là dữ liệu giả, không phải thông tin thật.</div>
+<header class="topbar">
+  <a class="brand" href="../index.html">Quản lý lớp học<small>Trung tâm tiếng Nhật - bản mockup</small></a>
+  <span class="spacer"></span>
+  <div id="role-bar"></div>
+  <a class="btn-home" href="../index.html">Về trang chọn vai trò</a>
+</header>
+<div class="app">
+<nav class="sidenav" id="module-nav" aria-label="Module"></nav>
+<main class="main">
+  <div class="page-head">
+    <h1>Hồ sơ giáo viên, trợ giảng và tài khoản</h1>
+    <p class="muted" style="margin-bottom:0">M01: Quản lý học viên, giáo viên, phụ huynh. Quản lý hồ sơ giáo viên và trợ giảng, hình thức hợp tác, cấp tài khoản và gán vai trò.</p>
+    <div class="meta" aria-label="Mã liên quan">
+      <span class="tag code">SCR-M01-02</span>
+      <span class="tag">US-M01-03</span>
+      <span class="tag">UC-M01-03</span>
+      <span class="tag">FR-M01-04</span>
+      <span class="tag">FR-M01-05</span>
+    </div>
+    <div id="perm-info" class="perm-bar"></div>
+  </div>
+  <div id="denied" class="denied-panel"></div>
+  <div class="screen-content">
+
+    <div class="card">
+      <div class="tabs" role="tablist" aria-label="Loại nhân sự">
+        <button role="tab" id="g1" aria-selected="true" aria-controls="gp1">Giáo viên</button>
+        <button role="tab" id="g2" aria-selected="false" aria-controls="gp2">Trợ giảng</button>
+      </div>
+      <div id="gp1" class="tab-panel" role="tabpanel" aria-labelledby="g1">
+        <div class="toolbar"><button class="btn" type="button" data-act="tao" data-toast="Đã mở biểu mẫu hồ sơ giáo viên (minh họa)">Tạo hồ sơ giáo viên</button></div>
+        <div class="table-wrap"><table class="data">
+          <thead><tr><th>Mã</th><th>Họ tên</th><th>Tên chữ Nhật</th><th>Điện thoại</th><th>Trình độ</th><th>Hình thức hợp tác</th><th>Tài khoản</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">GV01</td><td>Phạm Thị Hương</td><td class="muted">-</td><td class="mono">0900000012</td><td>N1</td><td>Theo giờ</td><td><span class="badge ok">Đã cấp</span></td></tr>
+            <tr><td class="mono">GV02</td><td>Tanaka Yuki</td><td class="jp">田中 由紀</td><td class="mono">0900000013</td><td>Người bản ngữ</td><td>Theo lớp</td><td><span class="badge ok">Đã cấp</span></td></tr>
+            <tr><td class="mono">GV03</td><td>Đỗ Minh Quân</td><td class="muted">-</td><td class="mono">0900000014</td><td>N1</td><td>Theo khóa</td><td><span class="badge ok">Đã cấp</span></td></tr>
+            <tr><td class="mono">GV04</td><td>Sato Haruka</td><td class="jp">佐藤 遥</td><td class="mono">0900000011</td><td>Người bản ngữ</td><td>Theo giờ</td><td><span class="badge warn">Chưa cấp</span></td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div id="gp2" class="tab-panel" role="tabpanel" aria-labelledby="g2" hidden>
+        <div class="table-wrap"><table class="data">
+          <thead><tr><th>Mã</th><th>Họ tên</th><th>Điện thoại</th><th>Lớp được phân công</th><th>Quyền nhập điểm</th><th>Tài khoản</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">TG01</td><td>Vũ Thùy Dương</td><td class="mono">0900000015</td><td>N5-K01</td><td><span class="badge ok">Được cấp</span></td><td><span class="badge ok">Đã cấp</span></td></tr>
+            <tr><td class="mono">TG02</td><td>Ngô Anh Tuấn</td><td class="mono">0900000016</td><td>N4-K01</td><td><span class="badge muted">Chưa cấp</span></td><td><span class="badge ok">Đã cấp</span></td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+
+    <div class="grid c2">
+      <div class="card">
+        <h2>Hồ sơ giáo viên: Tanaka Yuki</h2>
+        <form data-demo="Đã lưu hồ sơ giáo viên (minh họa)">
+          <div class="form-grid">
+            <div class="field"><label for="g-ten">Họ tên *</label><input id="g-ten" value="Tanaka Yuki"></div>
+            <div class="field"><label for="g-nj">Tên chữ Nhật</label><input id="g-nj" class="jp" value="田中 由紀"></div>
+            <div class="field"><label for="g-ht">Hình thức hợp tác mặc định</label><select id="g-ht"><option>Theo giờ</option><option selected>Theo lớp</option><option>Theo khóa</option></select><span class="hint">Đổi được cho từng lớp khi phân công.</span></div>
+            <div class="field"><label for="g-dt">Điện thoại</label><input id="g-dt" value="0900000013"></div>
+          </div>
+          <button class="btn" type="submit" data-act="sua">Lưu hồ sơ</button>
+        </form>
+      </div>
+      <div class="card">
+        <h2>Cấp tài khoản và gán vai trò</h2>
+        <div class="alert info">Mỗi tài khoản có đúng 1 vai trò chính. Chỉ chủ trung tâm được gán vai trò chủ trung tâm và quản lý.</div>
+        <form data-demo="Đã cấp tài khoản (minh họa, mật khẩu tạm chỉ hiện một lần)">
+          <div class="form-grid">
+            <div class="field"><label for="a-nguoi">Người dùng</label><select id="a-nguoi"><option>Sato Haruka (GV04)</option><option>Ngô Anh Tuấn (TG02)</option></select></div>
+            <div class="field"><label for="a-vt">Vai trò chính</label><select id="a-vt"><option>Giáo viên</option><option>Trợ giảng</option></select></div>
+          </div>
+          <div class="form-actions">
+            <button class="btn" type="submit" data-act="tao">Cấp tài khoản</button>
+            <button class="btn danger" type="button" data-act="sua" data-toast="Tài khoản đã khóa; dữ liệu được giữ nguyên (minh họa)">Khóa tài khoản</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</main>
+</div>
+<script src="../assets/ux-v2.js"></script>
+<script src="../assets/zenith.js"></script>
+</body>
+</html>

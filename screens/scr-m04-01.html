@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCR-M04-01 - Học phí khóa và ghi danh</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/ux-v2.css">
+<link rel="stylesheet" href="../assets/zenith.css">
+<link rel="stylesheet" href="../assets/zenith-today.css">
+<script src="../assets/util.js"></script>
+<script src="../assets/permissions.js"></script>
+<script src="../assets/app.js"></script>
+</head>
+<body data-root=".." data-module="M04" data-scr="SCR-M04-01">
+<div class="demo-banner" role="note"><strong>Dữ liệu minh họa</strong>: tên, số điện thoại, email và số tiền trên màn hình này là dữ liệu giả, không phải thông tin thật.</div>
+<header class="topbar">
+  <a class="brand" href="../index.html">Quản lý lớp học<small>Trung tâm tiếng Nhật - bản mockup</small></a>
+  <span class="spacer"></span>
+  <div id="role-bar"></div>
+  <a class="btn-home" href="../index.html">Về trang chọn vai trò</a>
+</header>
+<div class="app">
+<nav class="sidenav" id="module-nav" aria-label="Module"></nav>
+<main class="main">
+  <div class="page-head">
+    <h1>Học phí khóa và ghi danh</h1>
+    <p class="muted" style="margin-bottom:0">M04: Học phí, thu chi, công nợ. Cấu hình học phí khóa và đợt thanh toán, ghi danh học viên và áp dụng miễn giảm.</p>
+    <div class="meta" aria-label="Mã liên quan">
+      <span class="tag code">SCR-M04-01</span>
+      <span class="tag">US-M04-01</span>
+      <span class="tag">US-M04-02</span>
+      <span class="tag">UC-M04-01</span>
+      <span class="tag">UC-M04-02</span>
+      <span class="tag">FR-M04-01</span>
+      <span class="tag">FR-M04-02</span>
+      <span class="tag">FR-M04-03</span>
+    </div>
+    <div id="perm-info" class="perm-bar"></div>
+  </div>
+  <div id="denied" class="denied-panel"></div>
+  <div class="screen-content">
+
+    <div class="card">
+      <h2>Học phí khóa và các đợt thanh toán</h2>
+      <p class="small muted">Khóa minh họa: N5 ngắn hạn gồm 24 buổi (khác khóa Sơ cấp N5 48 buổi ở màn hình khóa học), tổng học phí 6.000.000 đồng, chia 3 đợt. Mỗi khóa có 1 đến 6 đợt; hạn nộp đợt sau muộn hơn đợt trước ít nhất 7 ngày. Số đợt và số tiền là đề xuất mẫu, chờ duyệt.</p>
+      <div class="form-grid">
+        <div class="field"><label for="h-khoa">Khóa</label><select id="h-khoa"><option>N5 ngắn hạn (24 buổi)</option></select></div>
+        <div class="field"><label for="h-tong">Tổng học phí (đồng)</label><input id="h-tong" class="num" value="6.000.000"></div>
+        <div class="field"><label for="h-buoi">Số buổi</label><input id="h-buoi" type="number" min="1" value="24"></div>
+        <div class="field"><label>Đơn giá mỗi buổi (đồng)</label><div id="h-dg" class="mono" style="padding:7px 0"></div></div>
+      </div>
+      <div class="table-wrap"><table class="data" id="tbl-dot">
+        <thead><tr><th>Đợt</th><th class="num">Số tiền (đồng)</th><th>Hạn nộp</th></tr></thead>
+        <tbody>
+          <tr><td>Đợt 1</td><td class="num"><input class="dot-tien" value="2.000.000" aria-label="Số tiền đợt 1" style="text-align:right;font:inherit;padding:6px 8px;border:1px solid #b7bec7;border-radius:6px;min-height:36px;"></td><td><input type="date" value="2026-09-05" aria-label="Hạn nộp đợt 1" style="font:inherit;padding:6px 8px;border:1px solid #b7bec7;border-radius:6px;min-height:36px;"></td></tr>
+          <tr><td>Đợt 2</td><td class="num"><input class="dot-tien" value="2.000.000" aria-label="Số tiền đợt 2" style="text-align:right;font:inherit;padding:6px 8px;border:1px solid #b7bec7;border-radius:6px;min-height:36px;"></td><td><input type="date" value="2026-10-05" aria-label="Hạn nộp đợt 2" style="font:inherit;padding:6px 8px;border:1px solid #b7bec7;border-radius:6px;min-height:36px;"></td></tr>
+          <tr><td>Đợt 3</td><td class="num"><input class="dot-tien" value="2.000.000" aria-label="Số tiền đợt 3" style="text-align:right;font:inherit;padding:6px 8px;border:1px solid #b7bec7;border-radius:6px;min-height:36px;"></td><td><input type="date" value="2026-11-05" aria-label="Hạn nộp đợt 3" style="font:inherit;padding:6px 8px;border:1px solid #b7bec7;border-radius:6px;min-height:36px;"></td></tr>
+        </tbody>
+        <tfoot><tr><td><strong>Tổng các đợt</strong></td><td class="num" id="t-dot"></td><td id="t-ck"></td></tr></tfoot>
+      </table></div>
+      <div class="form-actions"><button class="btn" type="button" id="h-luu" data-act="sua">Lưu cấu hình học phí</button></div>
+      <div id="h-msg" class="alert info" hidden></div>
+    </div>
+
+    <div class="grid c2">
+      <div class="card">
+        <h2>Ghi danh học viên vào khóa</h2>
+        <div class="form-grid">
+          <div class="field"><label for="g-hv">Học viên</label><select id="g-hv"><option>Lê Thu Hà</option><option>Đặng Quốc Huy</option><option>Bùi Khánh Linh</option></select></div>
+          <div class="field"><label for="g-kh">Khóa</label><select id="g-kh"><option>N5 ngắn hạn (24 buổi)</option></select></div>
+        </div>
+        <div class="form-actions"><button class="btn" type="button" id="g-ghi" data-act="tao">Ghi danh và sinh khoản phải thu</button></div>
+        <div id="g-msg" class="alert info" hidden></div>
+        <p class="small muted">Mỗi lần ghi danh sinh đúng số khoản phải thu bằng số đợt của khóa. Một học viên không ghi danh hai lần vào cùng một khóa đang mở.</p>
+      </div>
+      <div class="card">
+        <h2>Miễn giảm học phí</h2>
+        <div class="form-grid">
+          <div class="field"><label for="m-hv">Học viên</label><select id="m-hv"><option>Đặng Quốc Huy</option></select></div>
+          <div class="field"><label for="m-loai">Loại miễn giảm</label><select id="m-loai"><option>Ưu đãi đăng ký sớm</option><option>Anh chị em cùng học</option></select></div>
+          <div class="field"><label for="m-pt">Phần trăm</label><input id="m-pt" type="number" min="0" max="100" value="10"></div>
+          <div class="field"><label for="m-ld">Lý do *</label><input id="m-ld" value="Đăng ký sớm trước 2 tuần"></div>
+          <div class="field"><label for="m-ng">Người duyệt *</label><select id="m-ng"><option>Cao Thị Thu (Chủ trung tâm)</option><option>Đinh Văn Lộc (Quản lý)</option></select></div>
+        </div>
+        <div class="form-actions"><button class="btn" type="button" id="m-ap" data-act="duyet">Áp dụng miễn giảm</button></div>
+        <div id="m-msg" class="alert info" hidden></div>
+        <p class="small muted">Tổng miễn giảm trên một khóa tối đa 50% học phí (số mặc định, trung tâm cấu hình). Miễn giảm đã duyệt không sửa trực tiếp, chỉ sửa bằng bản điều chỉnh.</p>
+      </div>
+    </div>
+    <div class="toolbar"><a class="btn accent" href="scr-m04-02.html">Xem công nợ và ghi nhận thanh toán</a></div>
+<script>
+(function () {
+  var tong = document.getElementById('h-tong'), buoi = document.getElementById('h-buoi'), inputs = document.querySelectorAll('.dot-tien');
+  function calc() {
+    var t = U.num(tong.value), b = U.num(buoi.value) || 1, s = 0;
+    Array.prototype.forEach.call(inputs, function (i) { s += U.num(i.value); });
+    document.getElementById('h-dg').textContent = U.fmt(t) + ' / ' + b + ' = ' + U.fmt(t / b);
+    document.getElementById('t-dot').textContent = U.fmt(s);
+    var ck = document.getElementById('t-ck'); ck.textContent = s === t ? 'Khớp tổng học phí' : 'Lệch ' + U.fmt(s - t) + ' đồng';
+    return s === t;
+  }
+  [tong, buoi].concat(Array.prototype.slice.call(inputs)).forEach(function (i) { i.addEventListener('input', calc); });
+  document.getElementById('h-luu').addEventListener('click', function () {
+    if (!calc()) { U.setMsg('h-msg', 'bad', 'Chặn lưu: tổng các đợt khác tổng học phí khóa.'); return; }
+    U.setMsg('h-msg', 'ok', 'Đã lưu 3 đợt, tổng ' + U.fmt(U.num(tong.value)) + ' đồng (minh họa).');
+  });
+  document.getElementById('g-ghi').addEventListener('click', function () {
+    var who = document.getElementById('g-hv').value;
+    U.setMsg('g-msg', 'ok', 'Đã ghi danh ' + who + ' vào khóa N5 ngắn hạn. Sinh 3 khoản phải thu, mỗi khoản 2.000.000 đồng, tổng phải thu 6.000.000 đồng (minh họa).');
+  });
+  document.getElementById('m-ap').addEventListener('click', function () {
+    var p = U.num(document.getElementById('m-pt').value), t = 6000000;
+    if (!document.getElementById('m-ld').value.replace(/\s/g, '')) { U.setMsg('m-msg', 'bad', 'Miễn giảm phải có lý do.'); return; }
+    if (p > 50) { U.setMsg('m-msg', 'bad', 'Chặn: tổng miễn giảm tối đa 50% học phí khóa, bạn nhập ' + p + '%.'); return; }
+    var g = Math.round(t * p / 100), con = t - g;
+    U.setMsg('m-msg', 'ok', 'Đã áp dụng ' + p + '%: ' + U.fmt(t) + ' x ' + p + '% = ' + U.fmt(g) + ' đồng. Học phí còn ' + U.fmt(con) + ' đồng, mỗi đợt còn ' + U.fmt(con / 3) + ' đồng (minh họa).');
+  });
+  calc();
+})();
+</script>
+
+  </div>
+</main>
+</div>
+<script src="../assets/ux-v2.js"></script>
+<script src="../assets/zenith.js"></script>
+</body>
+</html>
